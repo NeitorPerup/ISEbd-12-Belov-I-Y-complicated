@@ -19,6 +19,7 @@ namespace WindowsFormsWarships
             InitializeComponent();
             comboBoxGuns.Items.AddRange(new string[] { "2 Guns", "4 Guns", "6 Guns" });
         }
+
         private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxWarship.Width, pictureBoxWarship.Height);
@@ -26,6 +27,7 @@ namespace WindowsFormsWarships
             warship.DrawTransport(gr);
             pictureBoxWarship.Image = bmp;
         }
+
         private void buttonCreate_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
@@ -35,6 +37,7 @@ namespace WindowsFormsWarships
             pictureBoxWarship.Height);
             Draw();
         }
+
         private void buttonMove_Click(object sender, EventArgs e)
         {
             //получаем имя кнопки
@@ -54,6 +57,7 @@ namespace WindowsFormsWarships
                     warship.MoveTransport(Direction.Right);
                     break;
             }
+
             Draw();
         }
     }
