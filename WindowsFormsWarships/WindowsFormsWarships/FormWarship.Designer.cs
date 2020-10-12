@@ -29,35 +29,39 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormWarship));
-            this.pictureBoxWarship = new System.Windows.Forms.PictureBox();
-            this.buttonCreate = new System.Windows.Forms.Button();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
             this.comboBoxGuns = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarship)).BeginInit();
+            this.groupBox = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonCreateWarship = new System.Windows.Forms.Button();
+            this.buttonCreateShip = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.checkBoxNone = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.checkBoxEllipse = new System.Windows.Forms.CheckBox();
+            this.checkBoxRectangle = new System.Windows.Forms.CheckBox();
+            this.buttonFirstForm = new System.Windows.Forms.Button();
+            this.buttonSecondForm = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pictureBoxWarship
+            // pictureBox
             // 
-            this.pictureBoxWarship.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxWarship.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxWarship.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxWarship.Name = "pictureBoxWarship";
-            this.pictureBoxWarship.Size = new System.Drawing.Size(884, 461);
-            this.pictureBoxWarship.TabIndex = 0;
-            this.pictureBoxWarship.TabStop = false;
-            // 
-            // buttonCreate
-            // 
-            this.buttonCreate.Location = new System.Drawing.Point(0, 0);
-            this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(57, 53);
-            this.buttonCreate.TabIndex = 1;
-            this.buttonCreate.Text = "Создать";
-            this.buttonCreate.UseVisualStyleBackColor = true;
-            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
+            this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(884, 461);
+            this.pictureBox.TabIndex = 0;
+            this.pictureBox.TabStop = false;
             // 
             // buttonRight
             // 
@@ -110,38 +114,196 @@
             // comboBoxGuns
             // 
             this.comboBoxGuns.FormattingEnabled = true;
-            this.comboBoxGuns.Location = new System.Drawing.Point(75, 17);
+            this.comboBoxGuns.Location = new System.Drawing.Point(116, 70);
             this.comboBoxGuns.Name = "comboBoxGuns";
-            this.comboBoxGuns.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxGuns.Size = new System.Drawing.Size(78, 21);
             this.comboBoxGuns.TabIndex = 6;
+            // 
+            // groupBox
+            // 
+            this.groupBox.Controls.Add(this.buttonSecondForm);
+            this.groupBox.Controls.Add(this.buttonFirstForm);
+            this.groupBox.Controls.Add(this.checkBoxRectangle);
+            this.groupBox.Controls.Add(this.checkBoxEllipse);
+            this.groupBox.Controls.Add(this.label6);
+            this.groupBox.Controls.Add(this.label5);
+            this.groupBox.Controls.Add(this.checkBoxNone);
+            this.groupBox.Controls.Add(this.label4);
+            this.groupBox.Controls.Add(this.label3);
+            this.groupBox.Controls.Add(this.label2);
+            this.groupBox.Controls.Add(this.label1);
+            this.groupBox.Controls.Add(this.buttonCreateWarship);
+            this.groupBox.Controls.Add(this.comboBoxGuns);
+            this.groupBox.Controls.Add(this.buttonCreateShip);
+            this.groupBox.Location = new System.Drawing.Point(684, 0);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Size = new System.Drawing.Size(200, 182);
+            this.groupBox.TabIndex = 7;
+            this.groupBox.TabStop = false;
+            this.groupBox.Text = "Создать";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 73);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Количество орудий";
+            // 
+            // buttonCreateWarship
+            // 
+            this.buttonCreateWarship.Location = new System.Drawing.Point(106, 19);
+            this.buttonCreateWarship.Name = "buttonCreateWarship";
+            this.buttonCreateWarship.Size = new System.Drawing.Size(75, 38);
+            this.buttonCreateWarship.TabIndex = 1;
+            this.buttonCreateWarship.Text = "Военный корабль";
+            this.buttonCreateWarship.UseVisualStyleBackColor = true;
+            this.buttonCreateWarship.Click += new System.EventHandler(this.buttonCreateWarship_Click);
+            // 
+            // buttonCreateShip
+            // 
+            this.buttonCreateShip.Location = new System.Drawing.Point(7, 19);
+            this.buttonCreateShip.Name = "buttonCreateShip";
+            this.buttonCreateShip.Size = new System.Drawing.Size(75, 38);
+            this.buttonCreateShip.TabIndex = 0;
+            this.buttonCreateShip.Text = "Корабль";
+            this.buttonCreateShip.UseVisualStyleBackColor = true;
+            this.buttonCreateShip.Click += new System.EventHandler(this.buttonCreateShip_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 109);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(82, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Форма орудий";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 138);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(71, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Форма окна";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(84, 138);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(26, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Нет";
+            // 
+            // checkBoxNone
+            // 
+            this.checkBoxNone.AutoSize = true;
+            this.checkBoxNone.Location = new System.Drawing.Point(87, 154);
+            this.checkBoxNone.Name = "checkBoxNone";
+            this.checkBoxNone.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxNone.TabIndex = 12;
+            this.checkBoxNone.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(110, 138);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(30, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Круг";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(140, 138);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Квадрат";
+            // 
+            // checkBoxEllipse
+            // 
+            this.checkBoxEllipse.AutoSize = true;
+            this.checkBoxEllipse.Location = new System.Drawing.Point(116, 154);
+            this.checkBoxEllipse.Name = "checkBoxEllipse";
+            this.checkBoxEllipse.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxEllipse.TabIndex = 15;
+            this.checkBoxEllipse.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxRectangle
+            // 
+            this.checkBoxRectangle.AutoSize = true;
+            this.checkBoxRectangle.Location = new System.Drawing.Point(158, 154);
+            this.checkBoxRectangle.Name = "checkBoxRectangle";
+            this.checkBoxRectangle.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxRectangle.TabIndex = 16;
+            this.checkBoxRectangle.UseVisualStyleBackColor = true;
+            // 
+            // buttonFirstForm
+            // 
+            this.buttonFirstForm.Location = new System.Drawing.Point(113, 109);
+            this.buttonFirstForm.Name = "buttonFirstForm";
+            this.buttonFirstForm.Size = new System.Drawing.Size(35, 23);
+            this.buttonFirstForm.TabIndex = 17;
+            this.buttonFirstForm.Text = "1Ф";
+            this.buttonFirstForm.UseVisualStyleBackColor = true;
+            this.buttonFirstForm.Click += new System.EventHandler(this.buttonGunsForm_Click);
+            // 
+            // buttonSecondForm
+            // 
+            this.buttonSecondForm.Location = new System.Drawing.Point(154, 109);
+            this.buttonSecondForm.Name = "buttonSecondForm";
+            this.buttonSecondForm.Size = new System.Drawing.Size(34, 23);
+            this.buttonSecondForm.TabIndex = 18;
+            this.buttonSecondForm.Text = "2Ф";
+            this.buttonSecondForm.UseVisualStyleBackColor = true;
+            this.buttonSecondForm.Click += new System.EventHandler(this.buttonGunsForm_Click);
             // 
             // FormWarship
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
-            this.Controls.Add(this.comboBoxGuns);
+            this.Controls.Add(this.groupBox);
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.buttonLeft);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonRight);
-            this.Controls.Add(this.buttonCreate);
-            this.Controls.Add(this.pictureBoxWarship);
+            this.Controls.Add(this.pictureBox);
             this.Name = "FormWarship";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarship)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            this.groupBox.ResumeLayout(false);
+            this.groupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBoxWarship;
-        private System.Windows.Forms.Button buttonCreate;
+        private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonDown;
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonUp;
         private System.Windows.Forms.ComboBox comboBoxGuns;
+        private System.Windows.Forms.GroupBox groupBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonCreateWarship;
+        private System.Windows.Forms.Button buttonCreateShip;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox checkBoxRectangle;
+        private System.Windows.Forms.CheckBox checkBoxEllipse;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox checkBoxNone;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button buttonSecondForm;
+        private System.Windows.Forms.Button buttonFirstForm;
     }
 }
