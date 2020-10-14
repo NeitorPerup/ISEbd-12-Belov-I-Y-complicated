@@ -32,7 +32,7 @@ namespace WindowsFormsWarships
         {
             Random rnd = new Random();
             ship = new Ship(rnd.Next(100, 200), rnd.Next(1000, 2000), Color.Blue,
-            Color.Green, Color.Blue, true, true);
+            Color.Green, Color.Blue);
             ship.SetPosition(rnd.Next(50, 120), rnd.Next(50, 120), pictureBox.Width,
             pictureBox.Height);
             Draw();
@@ -41,7 +41,7 @@ namespace WindowsFormsWarships
         {
             Random rnd = new Random();
             ship = new Warship(rnd.Next(100, 200), rnd.Next(1000, 2000), Color.Blue, Color.Green,
-            Color.Red, true, true, (comboBoxGuns.SelectedIndex + 1) * 2, FormOfGun(), WindowForm());
+            Color.Red, (comboBoxGuns.SelectedIndex + 1) * 2, FormOfGun());
             ship.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBox.Width, pictureBox.Height);
 
             buttonSecondForm.Enabled = true;
@@ -82,40 +82,7 @@ namespace WindowsFormsWarships
             {
                 return 2;
             }
-        }
-
-        private int WindowForm()
-        {
-            int result = -1;
-            if (checkBoxNone.Checked)
-            {
-                if (checkBoxEllipse.Checked || checkBoxRectangle.Checked)
-                {
-                    MessageBox.Show("Выберите только один тип окон");
-                }
-                else { result = 0; }
-            }
-
-            else if (checkBoxEllipse.Checked)
-            {
-                if (checkBoxNone.Checked || checkBoxRectangle.Checked)
-                {
-                    MessageBox.Show("Выберите только один тип окон");
-                }
-                else { result = 1; }
-            }
-
-            else if (checkBoxRectangle.Checked)
-            {
-                if (checkBoxEllipse.Checked || checkBoxNone.Checked)
-                {
-                    MessageBox.Show("Выберите только один тип окон");
-                }
-                else { result = 2; }
-            }
-
-            return result;
-        }
+        }      
 
         private void buttonMove_Click(object sender, EventArgs e)
         {

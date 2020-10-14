@@ -16,18 +16,12 @@ namespace WindowsFormsWarships
 
         public Color DopColor { protected set; get; }
 
-        public bool Addition { protected set; get; }
-
-        public bool Antenna { protected set; get; }
-
-        public Ship(int maxSpeed, float weight, Color mainColor, Color dopColor, Color cannonColor, bool addition, bool antenna)
+        public Ship(int maxSpeed, float weight, Color mainColor, Color dopColor, Color cannonColor)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
             DopColor = dopColor;
-            Addition = addition;
-            Antenna = antenna;
         }
 
         protected Ship(int maxSpeed, float weight, Color mainColor, int shipWidth, int shipHeight)
@@ -121,12 +115,9 @@ namespace WindowsFormsWarships
             PointF[] annexPoints = { new PointF(_startPosX + 135, _startPosY - 6), new PointF(_startPosX + 155, _startPosY - 6),
                                          new PointF(_startPosX + 155, _startPosY + 5), new PointF(_startPosX + 135, _startPosY + 5)};
             g.FillPolygon(brDopColor, annexPoints);
-            
-
-           
+                     
             g.FillRectangle(brDopColor, _startPosX + 80, _startPosY, 15, 7);
-            g.FillRectangle(brDopColor, _startPosX + 91, _startPosY - 15, 2 , 15);
-            
+            g.FillRectangle(brDopColor, _startPosX + 91, _startPosY - 15, 2 , 15);         
         }
     }
 }

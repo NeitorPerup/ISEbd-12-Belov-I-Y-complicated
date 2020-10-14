@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace WindowsFormsWarships
 {
-    class ThirdGunForm : IDopElements
+    class RectangleGunForm : IDopElements
     {
         private EnumElements enumElements;
 
@@ -15,7 +15,7 @@ namespace WindowsFormsWarships
 
         public Color DopColor { private set; get; }
 
-        public ThirdGunForm(int gun, Color dopColor)
+        public RectangleGunForm(int gun, Color dopColor)
         {
             Number = gun;
             DopColor = dopColor;
@@ -40,8 +40,7 @@ namespace WindowsFormsWarships
         }
 
         private void DrawTwoGuns(Graphics g, float _startPosX, float _startPosY)
-        {
-            
+        {           
             Brush brDopColor = new SolidBrush(DopColor);
 
             g.FillRectangle(brDopColor, _startPosX + 185, _startPosY - 7, 20, 12);
@@ -49,8 +48,6 @@ namespace WindowsFormsWarships
 
             g.FillRectangle(brDopColor, _startPosX + 25, _startPosY - 7, 20, 12);
             g.FillRectangle(brDopColor, _startPosX + 9, _startPosY - 4, 20, 4);
-
-
         }
 
         private void DrawFourGuns(Graphics g, float _startPosX, float _startPosY)
@@ -62,8 +59,6 @@ namespace WindowsFormsWarships
 
             g.FillRectangle(brDopColor, _startPosX + 48, _startPosY - 15, 20, 20);
             g.FillRectangle(brDopColor, _startPosX + 29, _startPosY - 12, 24, 3);
-
-
         }
 
         private void DrawSixGuns(Graphics g, float _startPosX, float _startPosY)
@@ -79,8 +74,6 @@ namespace WindowsFormsWarships
                                            new PointF(_startPosX + 38, _startPosY + 28) };
             g.FillPolygon(brDopColor, cannon2Points);
             g.FillRectangle(brDopColor, _startPosX + 2, _startPosY + 20, 25, 5);
-
-
         }
     }
 }
