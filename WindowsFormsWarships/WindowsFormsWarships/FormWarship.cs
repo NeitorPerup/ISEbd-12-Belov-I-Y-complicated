@@ -46,6 +46,7 @@ namespace WindowsFormsWarships
 
             buttonSecondForm.Enabled = true;
             buttonFirstForm.Enabled = true;
+            buttonThirdForm.Enabled = true;
 
             Draw();
         }
@@ -55,17 +56,32 @@ namespace WindowsFormsWarships
             if (sender == buttonFirstForm)
             {
                 buttonSecondForm.Enabled = false;
+                buttonThirdForm.Enabled = false;
             }
             else if (sender == buttonSecondForm)
             {
                 buttonFirstForm.Enabled = false;
+                buttonThirdForm.Enabled = false;
+            }
+            else
+            {
+                buttonFirstForm.Enabled = false;
+                buttonSecondForm.Enabled = false;
             }
         }
 
         private int FormOfGun()
         {
-            if (buttonSecondForm.Enabled == false) { return 0; }
-            else { return 1; }
+            if (buttonFirstForm.Enabled == true) { 
+                return 0; 
+            }
+            else if (buttonSecondForm.Enabled == true) { 
+                return 1; 
+            }
+            else
+            {
+                return 2;
+            }
         }
 
         private int WindowForm()

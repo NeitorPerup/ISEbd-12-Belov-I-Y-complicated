@@ -36,19 +36,20 @@
             this.buttonUp = new System.Windows.Forms.Button();
             this.comboBoxGuns = new System.Windows.Forms.ComboBox();
             this.groupBox = new System.Windows.Forms.GroupBox();
+            this.buttonSecondForm = new System.Windows.Forms.Button();
+            this.buttonFirstForm = new System.Windows.Forms.Button();
+            this.checkBoxRectangle = new System.Windows.Forms.CheckBox();
+            this.checkBoxEllipse = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.checkBoxNone = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonCreateWarship = new System.Windows.Forms.Button();
             this.buttonCreateShip = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.checkBoxNone = new System.Windows.Forms.CheckBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.checkBoxEllipse = new System.Windows.Forms.CheckBox();
-            this.checkBoxRectangle = new System.Windows.Forms.CheckBox();
-            this.buttonFirstForm = new System.Windows.Forms.Button();
-            this.buttonSecondForm = new System.Windows.Forms.Button();
+            this.buttonThirdForm = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
@@ -121,6 +122,7 @@
             // 
             // groupBox
             // 
+            this.groupBox.Controls.Add(this.buttonThirdForm);
             this.groupBox.Controls.Add(this.buttonSecondForm);
             this.groupBox.Controls.Add(this.buttonFirstForm);
             this.groupBox.Controls.Add(this.checkBoxRectangle);
@@ -141,6 +143,98 @@
             this.groupBox.TabIndex = 7;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Создать";
+            // 
+            // buttonSecondForm
+            // 
+            this.buttonSecondForm.Location = new System.Drawing.Point(128, 109);
+            this.buttonSecondForm.Name = "buttonSecondForm";
+            this.buttonSecondForm.Size = new System.Drawing.Size(34, 23);
+            this.buttonSecondForm.TabIndex = 18;
+            this.buttonSecondForm.Text = "2Ф";
+            this.buttonSecondForm.UseVisualStyleBackColor = true;
+            this.buttonSecondForm.Click += new System.EventHandler(this.buttonGunsForm_Click);
+            // 
+            // buttonFirstForm
+            // 
+            this.buttonFirstForm.Location = new System.Drawing.Point(87, 109);
+            this.buttonFirstForm.Name = "buttonFirstForm";
+            this.buttonFirstForm.Size = new System.Drawing.Size(35, 23);
+            this.buttonFirstForm.TabIndex = 17;
+            this.buttonFirstForm.Text = "1Ф";
+            this.buttonFirstForm.UseVisualStyleBackColor = true;
+            this.buttonFirstForm.Click += new System.EventHandler(this.buttonGunsForm_Click);
+            // 
+            // checkBoxRectangle
+            // 
+            this.checkBoxRectangle.AutoSize = true;
+            this.checkBoxRectangle.Location = new System.Drawing.Point(158, 154);
+            this.checkBoxRectangle.Name = "checkBoxRectangle";
+            this.checkBoxRectangle.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxRectangle.TabIndex = 16;
+            this.checkBoxRectangle.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEllipse
+            // 
+            this.checkBoxEllipse.AutoSize = true;
+            this.checkBoxEllipse.Location = new System.Drawing.Point(116, 154);
+            this.checkBoxEllipse.Name = "checkBoxEllipse";
+            this.checkBoxEllipse.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxEllipse.TabIndex = 15;
+            this.checkBoxEllipse.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(140, 138);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Квадрат";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(110, 138);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(30, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Круг";
+            // 
+            // checkBoxNone
+            // 
+            this.checkBoxNone.AutoSize = true;
+            this.checkBoxNone.Location = new System.Drawing.Point(87, 154);
+            this.checkBoxNone.Name = "checkBoxNone";
+            this.checkBoxNone.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxNone.TabIndex = 12;
+            this.checkBoxNone.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(84, 138);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(26, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Нет";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 138);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(71, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Форма окна";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 109);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(82, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Форма орудий";
             // 
             // label1
             // 
@@ -171,97 +265,15 @@
             this.buttonCreateShip.UseVisualStyleBackColor = true;
             this.buttonCreateShip.Click += new System.EventHandler(this.buttonCreateShip_Click);
             // 
-            // label2
+            // buttonThirdForm
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 109);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Форма орудий";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 138);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 13);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Форма окна";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(84, 138);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Нет";
-            // 
-            // checkBoxNone
-            // 
-            this.checkBoxNone.AutoSize = true;
-            this.checkBoxNone.Location = new System.Drawing.Point(87, 154);
-            this.checkBoxNone.Name = "checkBoxNone";
-            this.checkBoxNone.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxNone.TabIndex = 12;
-            this.checkBoxNone.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(110, 138);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(30, 13);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Круг";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(140, 138);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Квадрат";
-            // 
-            // checkBoxEllipse
-            // 
-            this.checkBoxEllipse.AutoSize = true;
-            this.checkBoxEllipse.Location = new System.Drawing.Point(116, 154);
-            this.checkBoxEllipse.Name = "checkBoxEllipse";
-            this.checkBoxEllipse.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxEllipse.TabIndex = 15;
-            this.checkBoxEllipse.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxRectangle
-            // 
-            this.checkBoxRectangle.AutoSize = true;
-            this.checkBoxRectangle.Location = new System.Drawing.Point(158, 154);
-            this.checkBoxRectangle.Name = "checkBoxRectangle";
-            this.checkBoxRectangle.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxRectangle.TabIndex = 16;
-            this.checkBoxRectangle.UseVisualStyleBackColor = true;
-            // 
-            // buttonFirstForm
-            // 
-            this.buttonFirstForm.Location = new System.Drawing.Point(113, 109);
-            this.buttonFirstForm.Name = "buttonFirstForm";
-            this.buttonFirstForm.Size = new System.Drawing.Size(35, 23);
-            this.buttonFirstForm.TabIndex = 17;
-            this.buttonFirstForm.Text = "1Ф";
-            this.buttonFirstForm.UseVisualStyleBackColor = true;
-            this.buttonFirstForm.Click += new System.EventHandler(this.buttonGunsForm_Click);
-            // 
-            // buttonSecondForm
-            // 
-            this.buttonSecondForm.Location = new System.Drawing.Point(154, 109);
-            this.buttonSecondForm.Name = "buttonSecondForm";
-            this.buttonSecondForm.Size = new System.Drawing.Size(34, 23);
-            this.buttonSecondForm.TabIndex = 18;
-            this.buttonSecondForm.Text = "2Ф";
-            this.buttonSecondForm.UseVisualStyleBackColor = true;
-            this.buttonSecondForm.Click += new System.EventHandler(this.buttonGunsForm_Click);
+            this.buttonThirdForm.Location = new System.Drawing.Point(168, 109);
+            this.buttonThirdForm.Name = "buttonThirdForm";
+            this.buttonThirdForm.Size = new System.Drawing.Size(32, 26);
+            this.buttonThirdForm.TabIndex = 19;
+            this.buttonThirdForm.Text = "3Ф";
+            this.buttonThirdForm.UseVisualStyleBackColor = true;
+            this.buttonThirdForm.Click += new System.EventHandler(this.buttonGunsForm_Click);
             // 
             // FormWarship
             // 
@@ -305,5 +317,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonSecondForm;
         private System.Windows.Forms.Button buttonFirstForm;
+        private System.Windows.Forms.Button buttonThirdForm;
     }
 }
