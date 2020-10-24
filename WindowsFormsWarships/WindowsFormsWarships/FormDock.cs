@@ -79,22 +79,20 @@ namespace WindowsFormsWarships
                     form.SetShip(ship);
                     form.ShowDialog();
                 }
+                maskedTextBox.Text = "";
                 Draw();
             }
         }
 
         private void ButtonSortWarship_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < dock._places.Length - 1 && dock._places[i] != null; ++i)
+            for (int i = 0; i < dock._places.Length - 1; ++i)
             {
                 for (int j = 0; j < dock._places.Length - 1; ++j)
                 {
-                    if (dock._places[j] != null)
+                    if (dock < j)
                     {
-                        if (dock < j)
-                        {
-                            dock.SwapShip(j, j + 1);
-                        }
+                        dock.SwapShip(j, j + 1);
                     }
                 }
             }
@@ -102,16 +100,13 @@ namespace WindowsFormsWarships
         }
         private void ButtonSortShip_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < dock._places.Length - 1 && dock._places[i] != null; ++i)
+            for (int i = 0; i < dock._places.Length - 1; ++i)
             {
                 for (int j = 0; j < dock._places.Length - 1; ++j)
                 {
-                    if (dock._places[j] != null)
+                    if (dock > j)
                     {
-                        if (dock > j)
-                        {
-                            dock.SwapShip(j, j + 1);
-                        }
+                        dock.SwapShip(j, j + 1);
                     }
                 }
             }

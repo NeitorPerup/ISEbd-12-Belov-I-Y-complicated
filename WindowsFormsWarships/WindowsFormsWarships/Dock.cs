@@ -42,10 +42,11 @@ namespace WindowsFormsWarships
             }
             return false;
         }
+
         /*
          * если передаваемый элемент военный корабль, а следующий за ним обычный
          * то возвращаем тру, иначе фолс
-         */ 
+         */
         public static bool operator >(Dock<T, U> d, int ind)
         {
             if (ind >= 0 && ind < d._places.Length - 1)
@@ -54,7 +55,7 @@ namespace WindowsFormsWarships
                 {
                     return true;
                 }
-            }          
+            }
             return false;
         }
         /*
