@@ -12,22 +12,70 @@ namespace WindowsFormsWarships
 {
     public partial class FormDock : Form
     {
-        private readonly Dock<Ship, TrapezeGunForm> dock;
+        private readonly DockCollection dockCollection;
 
         public FormDock()
         {
             InitializeComponent();
-            dock = new Dock<Ship, TrapezeGunForm>(pictureBoxDock.Width,
-                pictureBoxDock.Height);
+            dockCollection = new DockCollection(pictureBoxDock.Width, pictureBoxDock.Height);
             Draw();
+        }
+
+        private void ReloadLevels()
+        {
+            int index = listBoxDock.SelectedIndex;
+            listBoxDock.Items.Clear();
+            for (int i = 0; i < dockCollection.Keys.Count; i++)
+            {
+                listBoxDock.Items.Add(dockCollection.Keys[i]);
+            }
+            if (listBoxDock.Items.Count > 0 && (index == -1 || index >=
+            listBoxDock.Items.Count))
+            {
+                listBoxDock.SelectedIndex = 0;
+            }
+            else if (listBoxDock.Items.Count > 0 && index > -1 && index <
+            listBoxDock.Items.Count)
+            {
+                listBoxDock.SelectedIndex = index;
+            }
         }
 
         private void Draw()
         {
-            Bitmap bmp = new Bitmap(pictureBoxDock.Width, pictureBoxDock.Height);
-            Graphics gr = Graphics.FromImage(bmp);
-            dock.Draw(gr);
-            pictureBoxDock.Image = bmp;
+            if (listBoxDock.SelectedIndex > -1)
+            {
+                Bitmap bmp = new Bitmap(pictureBoxDock.Width, pictureBoxDock.Height);
+                Graphics gr = Graphics.FromImage(bmp);
+                dockCollection[listBoxDock.SelectedItem.ToString()].Draw(gr);
+                pictureBoxDock.Image = bmp;
+            }
+        }
+
+        private void buttonAddDock_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxNewLevelName.Text))
+            {
+                MessageBox.Show("Введите название дока", "Ошибка",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            dockCollection.AddDock(textBoxNewLevelName.Text);
+            textBoxNewLevelName.Text = "";
+            ReloadLevels();
+        }
+
+        private void buttonDelDock_Click(object sender, EventArgs e)
+        {
+            if (listBoxDock.SelectedIndex > -1)
+            {
+                if (MessageBox.Show($"Удалить док { listBoxDock.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    dockCollection.DelDock(listBoxDock.Text);
+                    ReloadLevels();
+                }
+            }
         }
 
         private void buttonSetShip_Click(object sender, EventArgs e)
@@ -36,7 +84,7 @@ namespace WindowsFormsWarships
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 var ship = new Ship(100, 1000, dialog.Color);
-                if (dock + ship)
+                if (dockCollection[listBoxDock.SelectedItem.ToString()] + ship)
                 {
                     Draw();
                 }
@@ -56,7 +104,7 @@ namespace WindowsFormsWarships
                 if (dialogDop.ShowDialog() == DialogResult.OK)
                 {
                     var warship = new Warship(100, 1000, dialog.Color, dialogDop.Color);
-                    if (dock + warship)
+                    if (dockCollection[listBoxDock.SelectedItem.ToString()] + warship)
                     {
                         Draw();
                     }
@@ -72,7 +120,7 @@ namespace WindowsFormsWarships
         {
             if (maskedTextBox.Text != "")
             {
-                var ship = dock - Convert.ToInt32(maskedTextBox.Text);
+                var ship = dockCollection[listBoxDock.SelectedItem.ToString()] - Convert.ToInt32(maskedTextBox.Text);
                 if (ship != null)
                 {
                     FormWarship form = new FormWarship();
@@ -84,32 +132,8 @@ namespace WindowsFormsWarships
             }
         }
 
-        private void ButtonSortWarship_Click(object sender, EventArgs e)
+        private void listBoxDock_SelectedIndexChanged(object sender, EventArgs e)
         {
-            for (int i = 0; i < dock._places.Length - 1; ++i)
-            {
-                for (int j = 0; j < dock._places.Length - 1; ++j)
-                {
-                    if (dock < j)
-                    {
-                        dock.SwapShip(j, j + 1);
-                    }
-                }
-            }
-            Draw();
-        }
-        private void ButtonSortShip_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < dock._places.Length - 1; ++i)
-            {
-                for (int j = 0; j < dock._places.Length - 1; ++j)
-                {
-                    if (dock > j)
-                    {
-                        dock.SwapShip(j, j + 1);
-                    }
-                }
-            }
             Draw();
         }
     }

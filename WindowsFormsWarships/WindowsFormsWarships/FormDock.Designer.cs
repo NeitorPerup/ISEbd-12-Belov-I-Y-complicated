@@ -35,39 +35,40 @@
             this.ButtonUndock = new System.Windows.Forms.Button();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.label = new System.Windows.Forms.Label();
-            this.groupBoxSort = new System.Windows.Forms.GroupBox();
-            this.buttonSortShip = new System.Windows.Forms.Button();
-            this.buttonSortWarship = new System.Windows.Forms.Button();
+            this.listBoxDock = new System.Windows.Forms.ListBox();
+            this.buttonDelDock = new System.Windows.Forms.Button();
+            this.buttonAddDock = new System.Windows.Forms.Button();
+            this.textBoxNewLevelName = new System.Windows.Forms.TextBox();
+            this.labelDockName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDock)).BeginInit();
             this.groupBox.SuspendLayout();
-            this.groupBoxSort.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxDock
             // 
             this.pictureBoxDock.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxDock.Name = "pictureBoxDock";
-            this.pictureBoxDock.Size = new System.Drawing.Size(725, 450);
+            this.pictureBoxDock.Size = new System.Drawing.Size(741, 450);
             this.pictureBoxDock.TabIndex = 0;
             this.pictureBoxDock.TabStop = false;
             // 
             // buttonDockShip
             // 
-            this.buttonDockShip.Location = new System.Drawing.Point(731, 31);
+            this.buttonDockShip.Location = new System.Drawing.Point(747, 258);
             this.buttonDockShip.Name = "buttonDockShip";
-            this.buttonDockShip.Size = new System.Drawing.Size(99, 53);
+            this.buttonDockShip.Size = new System.Drawing.Size(58, 53);
             this.buttonDockShip.TabIndex = 1;
-            this.buttonDockShip.Text = "Пришвартовать корабль";
+            this.buttonDockShip.Text = "Корабль";
             this.buttonDockShip.UseVisualStyleBackColor = true;
             this.buttonDockShip.Click += new System.EventHandler(this.buttonSetShip_Click);
             // 
             // buttonDockWarship
             // 
-            this.buttonDockWarship.Location = new System.Drawing.Point(731, 111);
+            this.buttonDockWarship.Location = new System.Drawing.Point(811, 258);
             this.buttonDockWarship.Name = "buttonDockWarship";
-            this.buttonDockWarship.Size = new System.Drawing.Size(99, 56);
+            this.buttonDockWarship.Size = new System.Drawing.Size(63, 53);
             this.buttonDockWarship.TabIndex = 2;
-            this.buttonDockWarship.Text = "Пришвартовать военный корабль";
+            this.buttonDockWarship.Text = "Военный корабль";
             this.buttonDockWarship.UseVisualStyleBackColor = true;
             this.buttonDockWarship.Click += new System.EventHandler(this.buttonSetWarship_Click);
             // 
@@ -76,7 +77,7 @@
             this.groupBox.Controls.Add(this.ButtonUndock);
             this.groupBox.Controls.Add(this.maskedTextBox);
             this.groupBox.Controls.Add(this.label);
-            this.groupBox.Location = new System.Drawing.Point(731, 191);
+            this.groupBox.Location = new System.Drawing.Point(759, 317);
             this.groupBox.Name = "groupBox";
             this.groupBox.Size = new System.Drawing.Size(99, 104);
             this.groupBox.TabIndex = 3;
@@ -109,43 +110,61 @@
             this.label.TabIndex = 0;
             this.label.Text = "Место";
             // 
-            // groupBoxSort
+            // listBoxDock
             // 
-            this.groupBoxSort.Controls.Add(this.buttonSortShip);
-            this.groupBoxSort.Controls.Add(this.buttonSortWarship);
-            this.groupBoxSort.Location = new System.Drawing.Point(731, 312);
-            this.groupBoxSort.Name = "groupBoxSort";
-            this.groupBoxSort.Size = new System.Drawing.Size(99, 126);
-            this.groupBoxSort.TabIndex = 4;
-            this.groupBoxSort.TabStop = false;
-            this.groupBoxSort.Text = "Отсортировать док";
+            this.listBoxDock.FormattingEnabled = true;
+            this.listBoxDock.Location = new System.Drawing.Point(747, 103);
+            this.listBoxDock.Name = "listBoxDock";
+            this.listBoxDock.Size = new System.Drawing.Size(120, 95);
+            this.listBoxDock.TabIndex = 4;
+            this.listBoxDock.Click += new System.EventHandler(this.listBoxDock_SelectedIndexChanged);
             // 
-            // buttonSortShip
+            // buttonDelDock
             // 
-            this.buttonSortShip.Location = new System.Drawing.Point(6, 85);
-            this.buttonSortShip.Name = "buttonSortShip";
-            this.buttonSortShip.Size = new System.Drawing.Size(83, 35);
-            this.buttonSortShip.TabIndex = 1;
-            this.buttonSortShip.Text = "Сначала обычные";
-            this.buttonSortShip.UseVisualStyleBackColor = true;
-            this.buttonSortShip.Click += new System.EventHandler(this.ButtonSortShip_Click);
+            this.buttonDelDock.Location = new System.Drawing.Point(747, 204);
+            this.buttonDelDock.Name = "buttonDelDock";
+            this.buttonDelDock.Size = new System.Drawing.Size(120, 23);
+            this.buttonDelDock.TabIndex = 5;
+            this.buttonDelDock.Text = "Удалить док";
+            this.buttonDelDock.UseVisualStyleBackColor = true;
+            this.buttonDelDock.Click += new System.EventHandler(this.buttonDelDock_Click);
             // 
-            // buttonSortWarship
+            // buttonAddDock
             // 
-            this.buttonSortWarship.Location = new System.Drawing.Point(7, 36);
-            this.buttonSortWarship.Name = "buttonSortWarship";
-            this.buttonSortWarship.Size = new System.Drawing.Size(75, 43);
-            this.buttonSortWarship.TabIndex = 0;
-            this.buttonSortWarship.Text = "Сначала военные";
-            this.buttonSortWarship.UseVisualStyleBackColor = true;
-            this.buttonSortWarship.Click += new System.EventHandler(this.ButtonSortWarship_Click);
+            this.buttonAddDock.Location = new System.Drawing.Point(747, 74);
+            this.buttonAddDock.Name = "buttonAddDock";
+            this.buttonAddDock.Size = new System.Drawing.Size(120, 23);
+            this.buttonAddDock.TabIndex = 6;
+            this.buttonAddDock.Text = "Добавить док";
+            this.buttonAddDock.UseVisualStyleBackColor = true;
+            this.buttonAddDock.Click += new System.EventHandler(this.buttonAddDock_Click);
+            // 
+            // textBoxNewLevelName
+            // 
+            this.textBoxNewLevelName.Location = new System.Drawing.Point(747, 42);
+            this.textBoxNewLevelName.Name = "textBoxNewLevelName";
+            this.textBoxNewLevelName.Size = new System.Drawing.Size(120, 20);
+            this.textBoxNewLevelName.TabIndex = 7;
+            // 
+            // labelDockName
+            // 
+            this.labelDockName.AutoSize = true;
+            this.labelDockName.Location = new System.Drawing.Point(786, 26);
+            this.labelDockName.Name = "labelDockName";
+            this.labelDockName.Size = new System.Drawing.Size(34, 13);
+            this.labelDockName.TabIndex = 8;
+            this.labelDockName.Text = "Доки";
             // 
             // FormDock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(842, 450);
-            this.Controls.Add(this.groupBoxSort);
+            this.ClientSize = new System.Drawing.Size(881, 450);
+            this.Controls.Add(this.labelDockName);
+            this.Controls.Add(this.textBoxNewLevelName);
+            this.Controls.Add(this.buttonAddDock);
+            this.Controls.Add(this.buttonDelDock);
+            this.Controls.Add(this.listBoxDock);
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.buttonDockWarship);
             this.Controls.Add(this.buttonDockShip);
@@ -155,8 +174,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDock)).EndInit();
             this.groupBox.ResumeLayout(false);
             this.groupBox.PerformLayout();
-            this.groupBoxSort.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -169,8 +188,10 @@
         private System.Windows.Forms.Button ButtonUndock;
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.Label label;
-        private System.Windows.Forms.GroupBox groupBoxSort;
-        private System.Windows.Forms.Button buttonSortShip;
-        private System.Windows.Forms.Button buttonSortWarship;
+        private System.Windows.Forms.ListBox listBoxDock;
+        private System.Windows.Forms.Button buttonDelDock;
+        private System.Windows.Forms.Button buttonAddDock;
+        private System.Windows.Forms.TextBox textBoxNewLevelName;
+        private System.Windows.Forms.Label labelDockName;
     }
 }

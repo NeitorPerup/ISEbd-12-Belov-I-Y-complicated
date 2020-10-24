@@ -9,7 +9,9 @@ namespace WindowsFormsWarships
 {
     public class Dock<T, U> where T : class, ITransport where U : class, IDopElements
     {
-        public readonly T[] _places;
+        private readonly List<T> _places;
+
+        private readonly int _maxCount;
 
         private readonly int pictureWidth;
 
@@ -23,88 +25,41 @@ namespace WindowsFormsWarships
         {
             int width = picWidth / _placeSizeWidth;
             int height = picHeight / _placeSizeHeight;
-            _places = new T[width * height];
+            _maxCount = width * height;
             pictureWidth = picWidth;
             pictureHeight = picHeight;
+            _places = new List<T>();
         }
 
         public static bool operator +(Dock<T, U> d, T ship)
         {
-            for (int i = 0; i < d._places.Length; i++)
+            if (d._places.Count >= d._maxCount)
             {
-                if (d._places[i] == null)
-                {
-                    ship.SetPosition(10 + d._placeSizeWidth * (int)(i / (int)(d.pictureHeight / d._placeSizeHeight)),
-                        30 + d._placeSizeHeight * (int)(i % (int)(d.pictureHeight / d._placeSizeHeight)), d.pictureWidth, d.pictureHeight);
-                    d._places[i] = ship;
-                    return true;
-                }
+                return false;
             }
-            return false;
-        }
-
-        /*
-         * если передаваемый элемент военный корабль, а следующий за ним обычный
-         * то возвращаем тру, иначе фолс
-         */
-        public static bool operator >(Dock<T, U> d, int ind)
-        {
-            if (ind >= 0 && ind < d._places.Length - 1)
-            {
-                if (d._places[ind] is Warship && d._places[ind + 1] is Ship)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-        /*
-         * если передаваемый элемент обычный корабль, а следующий за ним военный
-         * то возвращаем тру, иначе фолс
-         */
-        public static bool operator <(Dock<T, U> d, int ind)
-        {
-            if (ind >= 0 && ind < d._places.Length - 1)
-            {
-                if (d._places[ind] is Ship && d._places[ind + 1] is Warship)
-                {
-                    return true;
-                }
-            }
-            return false;
+            d._places.Add(ship);
+            return true;
         }
 
         public static T operator -(Dock<T, U> d, int index)
         {
-            if ((index < d._places.Length) && (index >= 0))
+            if (index <= -1 || index >= d._places.Count)
             {
-                T ship = d._places[index];
-                d._places[index] = null;
-                return ship;
+                return null;
             }
-            return null;
+            T ship = d._places[index];
+            d._places.RemoveAt(index);
+            return ship;
         }
 
         public void Draw(Graphics g)
         {
             DrawMarking(g);
-            for (int i = 0; i < _places.Length; i++)
+            for (int i = 0; i < _places.Count; i++)
             {
+                _places[i].SetPosition(5 + i / 5 * _placeSizeWidth + 5, i % 5 *
+                    _placeSizeHeight + 25, pictureWidth, pictureHeight);
                 _places[i]?.DrawTransport(g);
-            }
-        }
-
-        public void SwapShip(int ind1, int ind2)
-        {
-            if (ind1 >= 0 && ind1 < _places.Length && ind2 >= 0 && ind2 < _places.Length)
-            {
-                var t = _places[ind1];
-                _places[ind1] = _places[ind2];
-                _places[ind2] = t;
-                _places[ind1].SetPosition(10 + _placeSizeWidth * (int)(ind1 / (int)(pictureHeight / _placeSizeHeight)),
-                        30 + _placeSizeHeight * (int)(ind1 % (int)(pictureHeight / _placeSizeHeight)), pictureWidth, pictureHeight);
-                _places[ind2].SetPosition(10 + _placeSizeWidth * (int)(ind2 / (int)(pictureHeight / _placeSizeHeight)),
-                        30 + _placeSizeHeight * (int)(ind2 % (int)(pictureHeight / _placeSizeHeight)), pictureWidth, pictureHeight);
             }
         }
 

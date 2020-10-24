@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Direction.cs" />
     <Compile Include="Dock.cs" />
+    <Compile Include="DockCollection.cs" />
     <Compile Include="EnumElements.cs" />
     <Compile Include="FormDock.cs">
       <SubType>Form</SubType>
