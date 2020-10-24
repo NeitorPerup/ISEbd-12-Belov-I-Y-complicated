@@ -11,6 +11,8 @@ namespace WindowsFormsWarships
     {
         private IDopElements gun;
 
+        public Color DopColor { private set; get; }
+
         public Warship(int maxSpeed, float weight, Color mainColor, Color dopColor, Color gunColor,
             int guns, int gunsForm) :
             base(maxSpeed, weight, mainColor, 100, 60)
@@ -29,6 +31,13 @@ namespace WindowsFormsWarships
             {
                 gun = new RectangleGunForm(guns, gunColor);
             }
+        }
+
+        public Warship(int maxSpeed, float weight, Color mainColor, Color dopColor) :
+            base(maxSpeed, weight, mainColor, 100, 60)
+        {
+            DopColor = dopColor;
+            gun = new TrapezeGunForm(6, dopColor);
         }
 
         public override void DrawTransport(Graphics g)

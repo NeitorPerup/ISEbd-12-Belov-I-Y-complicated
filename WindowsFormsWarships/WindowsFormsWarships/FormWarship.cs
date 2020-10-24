@@ -12,12 +12,18 @@ namespace WindowsFormsWarships
 {
     public partial class FormWarship : Form
     {
-        private Ship ship;
+        private ITransport ship;
         
         public FormWarship()
         {
             InitializeComponent();
             comboBoxGuns.Items.AddRange(new string[] { "2 Guns", "4 Guns", "6 Guns" });
+        }
+
+        public void SetShip(ITransport ship)
+        {
+            this.ship = ship;
+            Draw();
         }
 
         private void Draw()
@@ -31,8 +37,7 @@ namespace WindowsFormsWarships
         private void buttonCreateShip_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            ship = new Ship(rnd.Next(100, 200), rnd.Next(1000, 2000), Color.Blue,
-            Color.Green, Color.Blue);
+            ship = new Ship(rnd.Next(100, 200), rnd.Next(1000, 2000), Color.Blue);
             ship.SetPosition(rnd.Next(50, 120), rnd.Next(50, 120), pictureBox.Width,
             pictureBox.Height);
             Draw();

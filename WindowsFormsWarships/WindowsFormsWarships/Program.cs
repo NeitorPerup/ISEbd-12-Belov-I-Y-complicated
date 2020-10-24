@@ -17,7 +17,7 @@ namespace WindowsFormsWarships
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormWarship());
+            Application.Run(new FormDock());
         }
     }
 }

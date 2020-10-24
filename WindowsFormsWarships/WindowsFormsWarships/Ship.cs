@@ -14,14 +14,11 @@ namespace WindowsFormsWarships
 
         protected readonly int shipHeight = 50;       
 
-        public Color DopColor { protected set; get; }
-
-        public Ship(int maxSpeed, float weight, Color mainColor, Color dopColor, Color cannonColor)
+        public Ship(int maxSpeed, float weight, Color mainColor)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
-            DopColor = dopColor;
         }
 
         protected Ship(int maxSpeed, float weight, Color mainColor, int shipWidth, int shipHeight)
@@ -73,12 +70,11 @@ namespace WindowsFormsWarships
         {
             Pen pen = new Pen(Color.Black);
 
-            // рисуем зелёную область
             g.DrawLine(pen, _startPosX, _startPosY + 15, _startPosX + 40, _startPosY + 35);
             g.DrawLine(pen, _startPosX + 40, _startPosY + 35, _startPosX + 190, _startPosY + 35);
             g.DrawLine(pen, _startPosX + 190, _startPosY + 35, _startPosX + 210, _startPosY + 15);
             g.DrawLine(pen, _startPosX + 210, _startPosY + 15, _startPosX, _startPosY + 15);
-            // закрашиваем зелёную область
+
             Brush brMainColor = new SolidBrush(MainColor);
             PointF p1 = new PointF(_startPosX, _startPosY + 15);
             PointF p2 = new PointF(_startPosX + 40, _startPosY + 35);
@@ -100,24 +96,17 @@ namespace WindowsFormsWarships
             PointF[] grPoints = { grp1, grp2, grp3, grp4 };
             g.FillPolygon(brGray, grPoints);
 
-            // теперь рисуем всякие приколюхи(труба + что-то рядом с ней)
-
-            Brush brDopColor = new SolidBrush(DopColor);
-            PointF[] tubePoints = {new PointF(_startPosX + 115, _startPosY + 5), new PointF(_startPosX + 108, _startPosY - 12),
-                             new PointF(_startPosX + 126, _startPosY - 18), new PointF(_startPosX + 133, _startPosY + 5) };
-            g.FillPolygon(brDopColor, tubePoints);
-
-            
             PointF[] expansionPoints = { new PointF(_startPosX + 110, _startPosY), new PointF(_startPosX + 100, _startPosY),
-                                         new PointF(_startPosX + 100, _startPosY + 7), new PointF(_startPosX + 110, _startPosY + 7)};
-            g.FillPolygon(brDopColor, expansionPoints);
+                                        new PointF(_startPosX + 100, _startPosY + 7), new PointF(_startPosX + 110, _startPosY + 7)};
+            g.FillPolygon(brMainColor, expansionPoints);
 
             PointF[] annexPoints = { new PointF(_startPosX + 135, _startPosY - 6), new PointF(_startPosX + 155, _startPosY - 6),
                                          new PointF(_startPosX + 155, _startPosY + 5), new PointF(_startPosX + 135, _startPosY + 5)};
-            g.FillPolygon(brDopColor, annexPoints);
-                     
-            g.FillRectangle(brDopColor, _startPosX + 80, _startPosY, 15, 7);
-            g.FillRectangle(brDopColor, _startPosX + 91, _startPosY - 15, 2 , 15);         
+            g.FillPolygon(brMainColor, annexPoints);
+
+            PointF[] tubePoints = {new PointF(_startPosX + 115, _startPosY + 5), new PointF(_startPosX + 108, _startPosY - 12),
+                             new PointF(_startPosX + 126, _startPosY - 18), new PointF(_startPosX + 133, _startPosY + 5) };
+            g.FillPolygon(brMainColor, tubePoints);
         }
     }
 }
