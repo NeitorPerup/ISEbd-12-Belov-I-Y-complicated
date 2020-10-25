@@ -14,10 +14,13 @@ namespace WindowsFormsWarships
     {
         private readonly DockCollection dockCollection;
 
+        private readonly Stack<Vehicle> shipStack;
+
         public FormDock()
         {
             InitializeComponent();
             dockCollection = new DockCollection(pictureBoxDock.Width, pictureBoxDock.Height);
+            shipStack = new Stack<Vehicle>();
             Draw();
         }
 
@@ -123,9 +126,7 @@ namespace WindowsFormsWarships
                 var ship = dockCollection[listBoxDock.SelectedItem.ToString()] - Convert.ToInt32(maskedTextBox.Text);
                 if (ship != null)
                 {
-                    FormWarship form = new FormWarship();
-                    form.SetShip(ship);
-                    form.ShowDialog();
+                    shipStack.Push(ship);
                 }
                 maskedTextBox.Text = "";
                 Draw();
@@ -135,6 +136,20 @@ namespace WindowsFormsWarships
         private void listBoxDock_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
+        }
+
+        private void ButtonUndockingShips_Click(object sender, EventArgs e)
+        {
+            if (shipStack.Count() > 0)
+            {
+                FormWarship form = new FormWarship();
+                form.SetShip(shipStack.Pop());
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Все корабли просмотрены");
+            }
         }
     }
 }

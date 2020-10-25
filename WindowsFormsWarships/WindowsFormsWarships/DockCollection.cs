@@ -54,5 +54,17 @@ namespace WindowsFormsWarships
                 }
             }
         }
+
+        public Vehicle this[string key, int ind]
+        {
+            get
+            {
+                if (dockStages.ContainsKey(key) && ind >= 0)
+                {
+                    return dockStages[key]._places[ind];
+                }
+                return null;
+            }
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace WindowsFormsWarships
 {
     public class Dock<T, U> where T : class, ITransport where U : class, IDopElements
     {
-        private readonly List<T> _places;
+        public readonly List<T> _places;
 
         private readonly int _maxCount;
 
@@ -75,6 +75,18 @@ namespace WindowsFormsWarships
                 }
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth,
                 (pictureHeight / _placeSizeHeight) * _placeSizeHeight);
+            }
+        }
+
+        public T this[int ind]
+        {
+            get
+            {
+                if (ind >= 0 && ind < _maxCount)
+                {
+                    return _places[ind];
+                }
+                return null;
             }
         }
     }

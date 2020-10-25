@@ -40,6 +40,7 @@
             this.buttonAddDock = new System.Windows.Forms.Button();
             this.textBoxNewLevelName = new System.Windows.Forms.TextBox();
             this.labelDockName = new System.Windows.Forms.Label();
+            this.buttonUndockingShips = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDock)).BeginInit();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
@@ -74,12 +75,13 @@
             // 
             // groupBox
             // 
+            this.groupBox.Controls.Add(this.buttonUndockingShips);
             this.groupBox.Controls.Add(this.ButtonUndock);
             this.groupBox.Controls.Add(this.maskedTextBox);
             this.groupBox.Controls.Add(this.label);
             this.groupBox.Location = new System.Drawing.Point(759, 317);
             this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(99, 104);
+            this.groupBox.Size = new System.Drawing.Size(99, 128);
             this.groupBox.TabIndex = 3;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Отшвартовать корабль";
@@ -155,11 +157,21 @@
             this.labelDockName.TabIndex = 8;
             this.labelDockName.Text = "Доки";
             // 
+            // buttonUndockingShips
+            // 
+            this.buttonUndockingShips.Location = new System.Drawing.Point(6, 98);
+            this.buttonUndockingShips.Name = "buttonUndockingShips";
+            this.buttonUndockingShips.Size = new System.Drawing.Size(93, 23);
+            this.buttonUndockingShips.TabIndex = 3;
+            this.buttonUndockingShips.Text = "Просмотреть";
+            this.buttonUndockingShips.UseVisualStyleBackColor = true;
+            this.buttonUndockingShips.Click += new System.EventHandler(this.ButtonUndockingShips_Click);
+            // 
             // FormDock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(881, 450);
+            this.ClientSize = new System.Drawing.Size(881, 457);
             this.Controls.Add(this.labelDockName);
             this.Controls.Add(this.textBoxNewLevelName);
             this.Controls.Add(this.buttonAddDock);
@@ -193,5 +205,6 @@
         private System.Windows.Forms.Button buttonAddDock;
         private System.Windows.Forms.TextBox textBoxNewLevelName;
         private System.Windows.Forms.Label labelDockName;
+        private System.Windows.Forms.Button buttonUndockingShips;
     }
 }
