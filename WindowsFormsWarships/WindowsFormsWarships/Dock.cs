@@ -43,35 +43,28 @@ namespace WindowsFormsWarships
             return false;
         }
 
-        /*
-         * если передаваемый элемент военный корабль, а следующий за ним обычный
-         * то возвращаем тру, иначе фолс
-         */
+
         public static bool operator >(Dock<T, U> d, int ind)
         {
-            if (ind >= 0 && ind < d._places.Length - 1)
-            {
-                if (d._places[ind] is Warship && d._places[ind + 1] is Ship)
-                {
-                    return true;
-                }
-            }
-            return false;
+            return d.CompareHelper() > ind;
         }
-        /*
-         * если передаваемый элемент обычный корабль, а следующий за ним военный
-         * то возвращаем тру, иначе фолс
-         */
+
         public static bool operator <(Dock<T, U> d, int ind)
         {
-            if (ind >= 0 && ind < d._places.Length - 1)
+            return d.CompareHelper() < ind;
+        }
+
+        private int CompareHelper()
+        {
+            int cnt = 0;
+            for (int i = 0; i < _places.Length; ++i)
             {
-                if (d._places[ind] is Ship && d._places[ind + 1] is Warship)
+                if (_places[i] != null)
                 {
-                    return true;
+                    cnt++;
                 }
             }
-            return false;
+            return cnt;
         }
 
         public static T operator -(Dock<T, U> d, int index)

@@ -12,7 +12,7 @@ namespace WindowsFormsWarships
     {
         protected readonly int shipWidth = 90;
 
-        protected readonly int shipHeight = 50;       
+        protected readonly int shipHeight = 50;
 
         public Ship(int maxSpeed, float weight, Color mainColor)
         {

@@ -40,7 +40,7 @@ namespace WindowsFormsWarships
         }
 
         private void DrawTwoGuns(Graphics g, float _startPosX, float _startPosY)
-        {           
+        {
             Brush brDopColor = new SolidBrush(DopColor);
 
             g.FillRectangle(brDopColor, _startPosX + 185, _startPosY - 7, 20, 12);

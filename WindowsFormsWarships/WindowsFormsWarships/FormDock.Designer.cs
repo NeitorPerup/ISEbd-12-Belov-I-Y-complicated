@@ -35,19 +35,19 @@
             this.ButtonUndock = new System.Windows.Forms.Button();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.label = new System.Windows.Forms.Label();
-            this.groupBoxSort = new System.Windows.Forms.GroupBox();
-            this.buttonSortShip = new System.Windows.Forms.Button();
-            this.buttonSortWarship = new System.Windows.Forms.Button();
+            this.buttonCompare = new System.Windows.Forms.Button();
+            this.checkBoxMore = new System.Windows.Forms.CheckBox();
+            this.checkBoxLess = new System.Windows.Forms.CheckBox();
+            this.Compare = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDock)).BeginInit();
             this.groupBox.SuspendLayout();
-            this.groupBoxSort.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxDock
             // 
             this.pictureBoxDock.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxDock.Name = "pictureBoxDock";
-            this.pictureBoxDock.Size = new System.Drawing.Size(725, 450);
+            this.pictureBoxDock.Size = new System.Drawing.Size(725, 539);
             this.pictureBoxDock.TabIndex = 0;
             this.pictureBoxDock.TabStop = false;
             // 
@@ -109,43 +109,51 @@
             this.label.TabIndex = 0;
             this.label.Text = "Место";
             // 
-            // groupBoxSort
+            // buttonCompare
             // 
-            this.groupBoxSort.Controls.Add(this.buttonSortShip);
-            this.groupBoxSort.Controls.Add(this.buttonSortWarship);
-            this.groupBoxSort.Location = new System.Drawing.Point(731, 312);
-            this.groupBoxSort.Name = "groupBoxSort";
-            this.groupBoxSort.Size = new System.Drawing.Size(99, 126);
-            this.groupBoxSort.TabIndex = 4;
-            this.groupBoxSort.TabStop = false;
-            this.groupBoxSort.Text = "Отсортировать док";
+            this.buttonCompare.Location = new System.Drawing.Point(731, 483);
+            this.buttonCompare.Name = "buttonCompare";
+            this.buttonCompare.Size = new System.Drawing.Size(89, 44);
+            this.buttonCompare.TabIndex = 8;
+            this.buttonCompare.Text = "Сравнить";
+            this.buttonCompare.UseVisualStyleBackColor = true;
+            this.buttonCompare.Click += new System.EventHandler(this.ButtonMore_Click);
             // 
-            // buttonSortShip
+            // checkBoxMore
             // 
-            this.buttonSortShip.Location = new System.Drawing.Point(6, 85);
-            this.buttonSortShip.Name = "buttonSortShip";
-            this.buttonSortShip.Size = new System.Drawing.Size(83, 35);
-            this.buttonSortShip.TabIndex = 1;
-            this.buttonSortShip.Text = "Сначала обычные";
-            this.buttonSortShip.UseVisualStyleBackColor = true;
-            this.buttonSortShip.Click += new System.EventHandler(this.ButtonSortShip_Click);
+            this.checkBoxMore.Location = new System.Drawing.Point(731, 380);
+            this.checkBoxMore.Name = "checkBoxMore";
+            this.checkBoxMore.Size = new System.Drawing.Size(104, 52);
+            this.checkBoxMore.TabIndex = 9;
+            this.checkBoxMore.Text = "Больше";
+            this.checkBoxMore.UseVisualStyleBackColor = true;
             // 
-            // buttonSortWarship
+            // checkBoxLess
             // 
-            this.buttonSortWarship.Location = new System.Drawing.Point(7, 36);
-            this.buttonSortWarship.Name = "buttonSortWarship";
-            this.buttonSortWarship.Size = new System.Drawing.Size(75, 43);
-            this.buttonSortWarship.TabIndex = 0;
-            this.buttonSortWarship.Text = "Сначала военные";
-            this.buttonSortWarship.UseVisualStyleBackColor = true;
-            this.buttonSortWarship.Click += new System.EventHandler(this.ButtonSortWarship_Click);
+            this.checkBoxLess.AutoSize = true;
+            this.checkBoxLess.Location = new System.Drawing.Point(731, 438);
+            this.checkBoxLess.Name = "checkBoxLess";
+            this.checkBoxLess.Size = new System.Drawing.Size(67, 17);
+            this.checkBoxLess.TabIndex = 10;
+            this.checkBoxLess.Text = "Меньше";
+            this.checkBoxLess.UseVisualStyleBackColor = true;
+            // 
+            // Compare
+            // 
+            this.Compare.Location = new System.Drawing.Point(731, 461);
+            this.Compare.Name = "Compare";
+            this.Compare.Size = new System.Drawing.Size(100, 20);
+            this.Compare.TabIndex = 11;
             // 
             // FormDock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(842, 450);
-            this.Controls.Add(this.groupBoxSort);
+            this.ClientSize = new System.Drawing.Size(842, 539);
+            this.Controls.Add(this.Compare);
+            this.Controls.Add(this.checkBoxLess);
+            this.Controls.Add(this.checkBoxMore);
+            this.Controls.Add(this.buttonCompare);
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.buttonDockWarship);
             this.Controls.Add(this.buttonDockShip);
@@ -155,8 +163,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDock)).EndInit();
             this.groupBox.ResumeLayout(false);
             this.groupBox.PerformLayout();
-            this.groupBoxSort.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -169,8 +177,9 @@
         private System.Windows.Forms.Button ButtonUndock;
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.Label label;
-        private System.Windows.Forms.GroupBox groupBoxSort;
-        private System.Windows.Forms.Button buttonSortShip;
-        private System.Windows.Forms.Button buttonSortWarship;
+        private System.Windows.Forms.Button buttonCompare;
+        private System.Windows.Forms.CheckBox checkBoxMore;
+        private System.Windows.Forms.CheckBox checkBoxLess;
+        private System.Windows.Forms.MaskedTextBox Compare;
     }
 }

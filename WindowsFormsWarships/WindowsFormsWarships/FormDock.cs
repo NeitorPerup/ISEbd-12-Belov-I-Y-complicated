@@ -112,5 +112,38 @@ namespace WindowsFormsWarships
             }
             Draw();
         }
+
+        private void ButtonMore_Click(object sender, EventArgs e)
+        {
+            int ind = -1;
+            if (Compare.Text != "")
+            {
+                ind = Convert.ToInt32(Compare.Text);
+            }
+            else { return; }
+            if (checkBoxMore.Checked)
+            {
+                if (dock > ind)
+                {
+                    MessageBox.Show("Парковка заполнена более, чем на " + ind + " мест(а)");
+                }
+                else
+                {
+                    MessageBox.Show("Парковка заполнена не более, чем на " + ind + " мест(а)");
+                }
+            }
+
+            else if (checkBoxLess.Checked)
+            {
+                if (dock < ind)
+                {
+                    MessageBox.Show("Парковка заполнена менее, чем на " + ind + " мест(а)");
+                }
+                else
+                {
+                    MessageBox.Show("Парковка заполнена не менее, чем на " + ind + " мест(а)");
+                }
+            }
+        }
     }
 }
