@@ -138,6 +138,7 @@ namespace WindowsFormsWarships
             Draw();
         }
 
+
         private void ButtonUndockingShips_Click(object sender, EventArgs e)
         {
             if (shipStack.Count() > 0)
@@ -150,6 +151,6 @@ namespace WindowsFormsWarships
             {
                 MessageBox.Show("Все корабли просмотрены");
             }
-        }
+        }       
     }
 }

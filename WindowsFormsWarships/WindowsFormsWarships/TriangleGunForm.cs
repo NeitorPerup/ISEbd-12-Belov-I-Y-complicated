@@ -72,7 +72,7 @@ namespace WindowsFormsWarships
         {
             DrawFourGuns(g, _startPosX, _startPosY);
             Brush brDopColor = new SolidBrush(DopColor);
-            
+
             g.FillRectangle(brDopColor, _startPosX + 195, _startPosY + 20, 23, 5);
             g.FillEllipse(brDopColor, _startPosX + 183, _startPosY + 13, 12, 17);
 

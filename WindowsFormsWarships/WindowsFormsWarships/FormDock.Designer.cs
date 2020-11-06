@@ -47,7 +47,7 @@
             // 
             // pictureBoxDock
             // 
-            this.pictureBoxDock.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxDock.Location = new System.Drawing.Point(-1, -2);
             this.pictureBoxDock.Name = "pictureBoxDock";
             this.pictureBoxDock.Size = new System.Drawing.Size(741, 450);
             this.pictureBoxDock.TabIndex = 0;
@@ -177,6 +177,11 @@
             this.Controls.Add(this.buttonAddDock);
             this.Controls.Add(this.buttonDelDock);
             this.Controls.Add(this.listBoxDock);
+            this.ClientSize = new System.Drawing.Size(842, 483);
+            this.Controls.Add(this.Compare);
+            this.Controls.Add(this.checkBoxLess);
+            this.Controls.Add(this.checkBoxMore);
+            this.Controls.Add(this.buttonCompare);
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.buttonDockWarship);
             this.Controls.Add(this.buttonDockShip);

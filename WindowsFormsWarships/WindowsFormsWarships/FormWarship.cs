@@ -13,7 +13,7 @@ namespace WindowsFormsWarships
     public partial class FormWarship : Form
     {
         private ITransport ship;
-        
+
         public FormWarship()
         {
             InitializeComponent();
@@ -77,17 +77,19 @@ namespace WindowsFormsWarships
 
         private int FormOfGun()
         {
-            if (buttonFirstForm.Enabled == true) { 
-                return 0; 
+            if (buttonFirstForm.Enabled == true)
+            {
+                return 0;
             }
-            else if (buttonSecondForm.Enabled == true) { 
-                return 1; 
+            else if (buttonSecondForm.Enabled == true)
+            {
+                return 1;
             }
             else
             {
                 return 2;
             }
-        }      
+        }
 
         private void buttonMove_Click(object sender, EventArgs e)
         {
