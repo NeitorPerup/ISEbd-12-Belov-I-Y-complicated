@@ -32,6 +32,7 @@
             this.buttonDockShip = new System.Windows.Forms.Button();
             this.buttonDockWarship = new System.Windows.Forms.Button();
             this.groupBox = new System.Windows.Forms.GroupBox();
+            this.buttonUndockingShips = new System.Windows.Forms.Button();
             this.ButtonUndock = new System.Windows.Forms.Button();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.label = new System.Windows.Forms.Label();
@@ -40,7 +41,6 @@
             this.buttonAddDock = new System.Windows.Forms.Button();
             this.textBoxNewLevelName = new System.Windows.Forms.TextBox();
             this.labelDockName = new System.Windows.Forms.Label();
-            this.buttonUndockingShips = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDock)).BeginInit();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
@@ -85,6 +85,16 @@
             this.groupBox.TabIndex = 3;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Отшвартовать корабль";
+            // 
+            // buttonUndockingShips
+            // 
+            this.buttonUndockingShips.Location = new System.Drawing.Point(6, 98);
+            this.buttonUndockingShips.Name = "buttonUndockingShips";
+            this.buttonUndockingShips.Size = new System.Drawing.Size(93, 23);
+            this.buttonUndockingShips.TabIndex = 3;
+            this.buttonUndockingShips.Text = "Просмотреть";
+            this.buttonUndockingShips.UseVisualStyleBackColor = true;
+            this.buttonUndockingShips.Click += new System.EventHandler(this.ButtonUndockingShips_Click);
             // 
             // ButtonUndock
             // 
@@ -157,31 +167,16 @@
             this.labelDockName.TabIndex = 8;
             this.labelDockName.Text = "Доки";
             // 
-            // buttonUndockingShips
-            // 
-            this.buttonUndockingShips.Location = new System.Drawing.Point(6, 98);
-            this.buttonUndockingShips.Name = "buttonUndockingShips";
-            this.buttonUndockingShips.Size = new System.Drawing.Size(93, 23);
-            this.buttonUndockingShips.TabIndex = 3;
-            this.buttonUndockingShips.Text = "Просмотреть";
-            this.buttonUndockingShips.UseVisualStyleBackColor = true;
-            this.buttonUndockingShips.Click += new System.EventHandler(this.ButtonUndockingShips_Click);
-            // 
             // FormDock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(881, 457);
+            this.ClientSize = new System.Drawing.Size(880, 483);
             this.Controls.Add(this.labelDockName);
             this.Controls.Add(this.textBoxNewLevelName);
             this.Controls.Add(this.buttonAddDock);
             this.Controls.Add(this.buttonDelDock);
             this.Controls.Add(this.listBoxDock);
-            this.ClientSize = new System.Drawing.Size(842, 483);
-            this.Controls.Add(this.Compare);
-            this.Controls.Add(this.checkBoxLess);
-            this.Controls.Add(this.checkBoxMore);
-            this.Controls.Add(this.buttonCompare);
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.buttonDockWarship);
             this.Controls.Add(this.buttonDockShip);
