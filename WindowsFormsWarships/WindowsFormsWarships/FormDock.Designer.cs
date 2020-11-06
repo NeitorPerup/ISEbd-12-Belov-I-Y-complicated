@@ -45,9 +45,9 @@
             // 
             // pictureBoxDock
             // 
-            this.pictureBoxDock.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxDock.Location = new System.Drawing.Point(-1, -2);
             this.pictureBoxDock.Name = "pictureBoxDock";
-            this.pictureBoxDock.Size = new System.Drawing.Size(725, 539);
+            this.pictureBoxDock.Size = new System.Drawing.Size(725, 482);
             this.pictureBoxDock.TabIndex = 0;
             this.pictureBoxDock.TabStop = false;
             // 
@@ -111,7 +111,7 @@
             // 
             // buttonCompare
             // 
-            this.buttonCompare.Location = new System.Drawing.Point(731, 483);
+            this.buttonCompare.Location = new System.Drawing.Point(735, 429);
             this.buttonCompare.Name = "buttonCompare";
             this.buttonCompare.Size = new System.Drawing.Size(89, 44);
             this.buttonCompare.TabIndex = 8;
@@ -121,9 +121,9 @@
             // 
             // checkBoxMore
             // 
-            this.checkBoxMore.Location = new System.Drawing.Point(731, 380);
+            this.checkBoxMore.Location = new System.Drawing.Point(731, 348);
             this.checkBoxMore.Name = "checkBoxMore";
-            this.checkBoxMore.Size = new System.Drawing.Size(104, 52);
+            this.checkBoxMore.Size = new System.Drawing.Size(104, 26);
             this.checkBoxMore.TabIndex = 9;
             this.checkBoxMore.Text = "Больше";
             this.checkBoxMore.UseVisualStyleBackColor = true;
@@ -131,7 +131,7 @@
             // checkBoxLess
             // 
             this.checkBoxLess.AutoSize = true;
-            this.checkBoxLess.Location = new System.Drawing.Point(731, 438);
+            this.checkBoxLess.Location = new System.Drawing.Point(731, 380);
             this.checkBoxLess.Name = "checkBoxLess";
             this.checkBoxLess.Size = new System.Drawing.Size(67, 17);
             this.checkBoxLess.TabIndex = 10;
@@ -140,7 +140,7 @@
             // 
             // Compare
             // 
-            this.Compare.Location = new System.Drawing.Point(731, 461);
+            this.Compare.Location = new System.Drawing.Point(730, 403);
             this.Compare.Name = "Compare";
             this.Compare.Size = new System.Drawing.Size(100, 20);
             this.Compare.TabIndex = 11;
@@ -149,7 +149,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(842, 539);
+            this.ClientSize = new System.Drawing.Size(842, 483);
             this.Controls.Add(this.Compare);
             this.Controls.Add(this.checkBoxLess);
             this.Controls.Add(this.checkBoxMore);

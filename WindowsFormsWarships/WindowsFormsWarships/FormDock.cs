@@ -98,6 +98,7 @@ namespace WindowsFormsWarships
             }
             Draw();
         }
+
         private void ButtonSortShip_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < dock._places.Length - 1; ++i)
@@ -115,7 +116,7 @@ namespace WindowsFormsWarships
 
         private void ButtonMore_Click(object sender, EventArgs e)
         {
-            int ind = -1;
+            int ind;
             if (Compare.Text != "")
             {
                 ind = Convert.ToInt32(Compare.Text);
