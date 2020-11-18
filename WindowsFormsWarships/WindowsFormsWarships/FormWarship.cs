@@ -45,8 +45,8 @@ namespace WindowsFormsWarships
         private void buttonCreateWarship_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            ship = new Warship(rnd.Next(100, 200), rnd.Next(1000, 2000), Color.Blue, Color.Green,
-            Color.Red, (comboBoxGuns.SelectedIndex + 1) * 2, FormOfGun());
+            ship = new Warship(rnd.Next(100, 200), rnd.Next(1000, 2000), Color.Blue, Color.Green, true, true, 
+                (comboBoxGuns.SelectedIndex + 1) * 2, FormOfGun());
             ship.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBox.Width, pictureBox.Height);
 
             buttonSecondForm.Enabled = true;
@@ -75,19 +75,19 @@ namespace WindowsFormsWarships
             }
         }
 
-        private int FormOfGun()
+        private string FormOfGun()
         {
             if (buttonFirstForm.Enabled == true)
             {
-                return 0;
+                return "TrapezeGunForm";
             }
             else if (buttonSecondForm.Enabled == true)
             {
-                return 1;
+                return "TriangleGunForm";
             }
             else
             {
-                return 2;
+                return "RectangleGunForm";
             }
         }
 

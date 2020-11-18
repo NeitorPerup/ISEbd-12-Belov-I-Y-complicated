@@ -11,7 +11,7 @@ namespace WindowsFormsWarships
     {
         private EnumElements enumElements;
 
-        public int Number { set => enumElements = (EnumElements)value; }
+        public int Number { set => enumElements = (EnumElements)value;}
 
         public Color DopColor { private set; get; }
 

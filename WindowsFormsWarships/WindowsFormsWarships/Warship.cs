@@ -13,23 +13,63 @@ namespace WindowsFormsWarships
 
         public Color DopColor { private set; get; }
 
-        public Warship(int maxSpeed, float weight, Color mainColor, Color dopColor, Color gunColor,
-            int guns, int gunsForm) :
+        public bool Antenna { private set; get; }
+
+        public bool DopBuilding { private set; get; }
+
+        public int Guns { private set; get; }
+
+        public string GunsForm { private set; get; }
+
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
+            if (GunsForm == "TrapezeGunForm")
+            {
+                gun = new TrapezeGunForm(Guns, DopColor);
+            }
+            else if (GunsForm == "TriangleGunForm")
+            {
+                gun = new TriangleGunForm(Guns, DopColor);
+            }
+            else if (GunsForm == "RectangleGunForm")
+            {
+                gun = new RectangleGunForm(Guns, DopColor);
+            }
+        }
+
+        public void SetGun(IDopElements guns)
+        {
+            gun = guns;
+            GunsForm = gun.GetType().Name;
+        }
+
+        public void SetGunNumber(int gunNumber)
+        {
+            Guns = gunNumber;
+        }
+
+        public Warship(int maxSpeed, float weight, Color mainColor, Color dopColor, 
+            bool antenna, bool dopBuilding, int guns, string gunsForm) :
             base(maxSpeed, weight, mainColor, 100, 60)
         {
             DopColor = dopColor;
+            Antenna = antenna;
+            DopBuilding = dopBuilding;
+            GunsForm = gunsForm;
+            Guns = guns;
 
-            if (gunsForm == 0)
+            if (GunsForm == "TrapezeGunForm")
             {
-                gun = new TrapezeGunForm(guns, gunColor);
+                gun = new TrapezeGunForm(Guns, DopColor);
             }
-            else if (gunsForm == 1)
+            else if (GunsForm == "TriangleGunForm")
             {
-                gun = new TriangleGunForm(guns, gunColor);
+                gun = new TriangleGunForm(Guns, DopColor);
             }
-            else if (gunsForm == 2)
+            else if (GunsForm == "RectangleGunForm")
             {
-                gun = new RectangleGunForm(guns, gunColor);
+                gun = new RectangleGunForm(Guns, DopColor);
             }
         }
 
@@ -37,13 +77,26 @@ namespace WindowsFormsWarships
             base(maxSpeed, weight, mainColor, 100, 60)
         {
             DopColor = dopColor;
-            gun = new TrapezeGunForm(6, dopColor);
         }
 
         public override void DrawTransport(Graphics g)
         {
             base.DrawTransport(g);
-            gun.DrawElements(g, _startPosX, _startPosY);
+            if (gun != null)
+            {
+                gun.DrawElements(g, _startPosX, _startPosY);
+            }
+            Brush brDopColor = new SolidBrush(DopColor);
+
+            if (DopBuilding)
+            {
+                g.FillRectangle(brDopColor, _startPosX + 70, _startPosY, 15, 7);
+            }
+
+            if (Antenna)
+            {
+                g.FillRectangle(brDopColor, _startPosX + 81, _startPosY - 15, 2, 20);
+            }
         }
     }
 }

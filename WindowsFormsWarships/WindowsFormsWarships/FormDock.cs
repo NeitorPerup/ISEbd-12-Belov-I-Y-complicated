@@ -151,6 +151,28 @@ namespace WindowsFormsWarships
             {
                 MessageBox.Show("Все корабли просмотрены");
             }
-        }       
+        }
+
+        private void ButtonAddShip_Click(object sender, EventArgs e)
+        {
+            var formShipConfig = new FormShipConfig();
+            formShipConfig.AddEvent(AddShip);
+            formShipConfig.Show();
+        }
+
+        private void AddShip(Vehicle ship)
+        {
+            if (ship != null && listBoxDock.SelectedIndex > -1)
+            {
+                if ((dockCollection[listBoxDock.SelectedItem.ToString()]) + ship)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Корабль не удалось поставить");
+                }
+            }
+        }
     }
 }
