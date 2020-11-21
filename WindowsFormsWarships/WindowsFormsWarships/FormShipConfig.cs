@@ -76,7 +76,6 @@ namespace WindowsFormsWarships
                 case "Военный":
                     ship = new Warship((int)numericUpDownMaxSpeed.Value, (int)numericUpDownWeight.Value,
                         Color.White, Color.Black, checkBoxAntenna.Checked, checkBoxDopBuilding.Checked, 2, "TrapezeGunForm");
-                    // checkBoxAntenna.Checked, checkBoxCannon.Checked, checkBoxDopBuilding.Checked
                     break;
             }
             DrawShip();
@@ -145,45 +144,6 @@ namespace WindowsFormsWarships
             }
         }
 
-        //private void LabelFinalChange_MouseDown(object sender, MouseEventArgs e)
-        //{
-        //    if (comboBoxGunsForm.Text != "Форма" && comboBoxGunsNumber.Text != "Количество")
-        //    {
-        //        Color dopColor;
-        //        IDopElements guns = null;
-        //        int gunsNumber = (comboBoxGunsNumber.SelectedIndex + 1) * 2;
-        //        if (ship is Warship)
-        //        {
-        //            dopColor = (ship as Warship).DopColor;
-        //        }
-        //        else 
-        //        {                    
-        //            dopColor = Color.White;
-        //        }
-        //        if (comboBoxGunsForm.Text == "Трапеция")
-        //        {                    
-        //            guns = new TrapezeGunForm(gunsNumber, dopColor);
-        //        }
-        //        else if (comboBoxGunsForm.Text == "Треугольник")
-        //        {
-        //            guns = new TriangleGunForm(gunsNumber, dopColor);
-        //        }
-        //        else if (comboBoxGunsForm.Text == "Квадрат")
-        //        {
-        //            guns = new RectangleGunForm(gunsNumber, dopColor);
-        //        }
-        //        if (guns != null)
-        //        {
-        //            labelFinalChange.DoDragDrop(guns, DragDropEffects.Move | DragDropEffects.Copy);
-        //            if (ship is Warship w)
-        //            {
-        //                w.SetGunNumber(gunsNumber);
-        //            }
-        //        }
-
-        //    }
-        //}
-
         private void LabelChangeGuns_DragDrop(object sender, DragEventArgs e)
         {
             if (ship is Warship w)
@@ -204,7 +164,6 @@ namespace WindowsFormsWarships
             }
         }
 
-        //delete thi s please
         private void LabelGunForm_MouseDown(object sender, MouseEventArgs e)
         {
             IDopElements gun = null;
