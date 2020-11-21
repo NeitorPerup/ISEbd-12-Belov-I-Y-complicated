@@ -44,12 +44,7 @@
             this.groupBoxColors = new System.Windows.Forms.GroupBox();
             this.panelWhite = new System.Windows.Forms.Panel();
             this.panelYellow = new System.Windows.Forms.Panel();
-            this.panel12 = new System.Windows.Forms.Panel();
             this.panelFuchsia = new System.Windows.Forms.Panel();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.panelBlack = new System.Windows.Forms.Panel();
             this.panelGreen = new System.Windows.Forms.Panel();
             this.panelBlue = new System.Windows.Forms.Panel();
@@ -60,10 +55,13 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.groupBoxGuns = new System.Windows.Forms.GroupBox();
-            this.labelFinalChange = new System.Windows.Forms.Label();
+            this.labelSixGuns = new System.Windows.Forms.Label();
+            this.labelFourGuns = new System.Windows.Forms.Label();
+            this.labelTwoGuns = new System.Windows.Forms.Label();
+            this.labelTriangleForm = new System.Windows.Forms.Label();
+            this.labelRectangleForm = new System.Windows.Forms.Label();
+            this.labelTrapezeForm = new System.Windows.Forms.Label();
             this.labelChangeGuns = new System.Windows.Forms.Label();
-            this.comboBoxGunsForm = new System.Windows.Forms.ComboBox();
-            this.comboBoxGunsNumber = new System.Windows.Forms.ComboBox();
             this.GroupBoxShipType.SuspendLayout();
             this.groupBoxParams.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWeight)).BeginInit();
@@ -73,7 +71,6 @@
             this.groupBoxColors.SuspendLayout();
             this.panelYellow.SuspendLayout();
             this.panelFuchsia.SuspendLayout();
-            this.panel10.SuspendLayout();
             this.groupBoxGuns.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -276,59 +273,19 @@
             // 
             this.panelYellow.BackColor = System.Drawing.Color.Yellow;
             this.panelYellow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelYellow.Controls.Add(this.panel12);
             this.panelYellow.Location = new System.Drawing.Point(64, 121);
             this.panelYellow.Name = "panelYellow";
             this.panelYellow.Size = new System.Drawing.Size(41, 37);
             this.panelYellow.TabIndex = 7;
             // 
-            // panel12
-            // 
-            this.panel12.Location = new System.Drawing.Point(171, 39);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(200, 100);
-            this.panel12.TabIndex = 8;
-            // 
             // panelFuchsia
             // 
             this.panelFuchsia.BackColor = System.Drawing.Color.Fuchsia;
             this.panelFuchsia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelFuchsia.Controls.Add(this.panel11);
-            this.panelFuchsia.Controls.Add(this.panel9);
-            this.panelFuchsia.Controls.Add(this.panel10);
             this.panelFuchsia.Location = new System.Drawing.Point(6, 121);
             this.panelFuchsia.Name = "panelFuchsia";
             this.panelFuchsia.Size = new System.Drawing.Size(41, 37);
-            this.panelFuchsia.TabIndex = 8;
-            // 
-            // panel11
-            // 
-            this.panel11.Location = new System.Drawing.Point(-31, 86);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(200, 100);
-            this.panel11.TabIndex = 7;
-            // 
-            // panel9
-            // 
-            this.panel9.Location = new System.Drawing.Point(174, 29);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(200, 100);
-            this.panel9.TabIndex = 6;
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.panel5);
-            this.panel10.Location = new System.Drawing.Point(-78, -45);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(41, 37);
-            this.panel10.TabIndex = 5;
-            // 
-            // panel5
-            // 
-            this.panel5.Location = new System.Drawing.Point(109, 48);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(41, 37);
-            this.panel5.TabIndex = 5;
+            this.panelFuchsia.TabIndex = 8;           
             // 
             // panelBlack
             // 
@@ -420,26 +377,85 @@
             // 
             // groupBoxGuns
             // 
-            this.groupBoxGuns.Controls.Add(this.labelFinalChange);
+            this.groupBoxGuns.Controls.Add(this.labelSixGuns);
+            this.groupBoxGuns.Controls.Add(this.labelFourGuns);
+            this.groupBoxGuns.Controls.Add(this.labelTwoGuns);
+            this.groupBoxGuns.Controls.Add(this.labelTriangleForm);
+            this.groupBoxGuns.Controls.Add(this.labelRectangleForm);
+            this.groupBoxGuns.Controls.Add(this.labelTrapezeForm);
             this.groupBoxGuns.Controls.Add(this.labelChangeGuns);
-            this.groupBoxGuns.Controls.Add(this.comboBoxGunsForm);
-            this.groupBoxGuns.Controls.Add(this.comboBoxGunsNumber);
             this.groupBoxGuns.Location = new System.Drawing.Point(404, 205);
             this.groupBoxGuns.Name = "groupBoxGuns";
-            this.groupBoxGuns.Size = new System.Drawing.Size(232, 111);
+            this.groupBoxGuns.Size = new System.Drawing.Size(232, 145);
             this.groupBoxGuns.TabIndex = 7;
             this.groupBoxGuns.TabStop = false;
             this.groupBoxGuns.Text = "Пушки";
             // 
-            // labelFinalChange
+            // labelSixGuns
             // 
-            this.labelFinalChange.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelFinalChange.Location = new System.Drawing.Point(60, 82);
-            this.labelFinalChange.Name = "labelFinalChange";
-            this.labelFinalChange.Size = new System.Drawing.Size(85, 23);
-            this.labelFinalChange.TabIndex = 3;
-            this.labelFinalChange.Text = "Перетащить";
-            this.labelFinalChange.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabelFinalChange_MouseDown);
+            this.labelSixGuns.AllowDrop = true;
+            this.labelSixGuns.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelSixGuns.Location = new System.Drawing.Point(19, 118);
+            this.labelSixGuns.Name = "labelSixGuns";
+            this.labelSixGuns.Size = new System.Drawing.Size(59, 23);
+            this.labelSixGuns.TabIndex = 8;
+            this.labelSixGuns.Text = "6";
+            this.labelSixGuns.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabelNumberGuns_MouseDown);
+            // 
+            // labelFourGuns
+            // 
+            this.labelFourGuns.AllowDrop = true;
+            this.labelFourGuns.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelFourGuns.Location = new System.Drawing.Point(19, 82);
+            this.labelFourGuns.Name = "labelFourGuns";
+            this.labelFourGuns.Size = new System.Drawing.Size(59, 23);
+            this.labelFourGuns.TabIndex = 7;
+            this.labelFourGuns.Text = "4";
+            this.labelFourGuns.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabelNumberGuns_MouseDown);
+            // 
+            // labelTwoGuns
+            // 
+            this.labelTwoGuns.AllowDrop = true;
+            this.labelTwoGuns.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelTwoGuns.Location = new System.Drawing.Point(19, 49);
+            this.labelTwoGuns.Name = "labelTwoGuns";
+            this.labelTwoGuns.Size = new System.Drawing.Size(59, 23);
+            this.labelTwoGuns.TabIndex = 6;
+            this.labelTwoGuns.Text = "2";
+            this.labelTwoGuns.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabelNumberGuns_MouseDown);
+            // 
+            // labelTriangleForm
+            // 
+            this.labelTriangleForm.AllowDrop = true;
+            this.labelTriangleForm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelTriangleForm.Location = new System.Drawing.Point(112, 82);
+            this.labelTriangleForm.Name = "labelTriangleForm";
+            this.labelTriangleForm.Size = new System.Drawing.Size(92, 23);
+            this.labelTriangleForm.TabIndex = 5;
+            this.labelTriangleForm.Text = "Треугольник";
+            this.labelTriangleForm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabelGunForm_MouseDown);
+            // 
+            // labelRectangleForm
+            // 
+            this.labelRectangleForm.AllowDrop = true;
+            this.labelRectangleForm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelRectangleForm.Location = new System.Drawing.Point(112, 118);
+            this.labelRectangleForm.Name = "labelRectangleForm";
+            this.labelRectangleForm.Size = new System.Drawing.Size(92, 23);
+            this.labelRectangleForm.TabIndex = 4;
+            this.labelRectangleForm.Text = "Квадрат";
+            this.labelRectangleForm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabelGunForm_MouseDown);
+            // 
+            // labelTrapezeForm
+            // 
+            this.labelTrapezeForm.AllowDrop = true;
+            this.labelTrapezeForm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelTrapezeForm.Location = new System.Drawing.Point(112, 49);
+            this.labelTrapezeForm.Name = "labelTrapezeForm";
+            this.labelTrapezeForm.Size = new System.Drawing.Size(92, 23);
+            this.labelTrapezeForm.TabIndex = 3;
+            this.labelTrapezeForm.Text = "Трапеция";
+            this.labelTrapezeForm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabelGunForm_MouseDown);
             // 
             // labelChangeGuns
             // 
@@ -452,26 +468,6 @@
             this.labelChangeGuns.Text = "Изменить орудия";
             this.labelChangeGuns.DragDrop += new System.Windows.Forms.DragEventHandler(this.LabelChangeGuns_DragDrop);
             this.labelChangeGuns.DragEnter += new System.Windows.Forms.DragEventHandler(this.LabelChangeGuns_DragEnter);
-            // 
-            // comboBoxGunsForm
-            // 
-            this.comboBoxGunsForm.AllowDrop = true;
-            this.comboBoxGunsForm.FormattingEnabled = true;
-            this.comboBoxGunsForm.Location = new System.Drawing.Point(115, 47);
-            this.comboBoxGunsForm.Name = "comboBoxGunsForm";
-            this.comboBoxGunsForm.Size = new System.Drawing.Size(101, 21);
-            this.comboBoxGunsForm.TabIndex = 1;
-            this.comboBoxGunsForm.Text = "Форма";
-            // 
-            // comboBoxGunsNumber
-            // 
-            this.comboBoxGunsNumber.AllowDrop = true;
-            this.comboBoxGunsNumber.FormattingEnabled = true;
-            this.comboBoxGunsNumber.Location = new System.Drawing.Point(6, 47);
-            this.comboBoxGunsNumber.Name = "comboBoxGunsNumber";
-            this.comboBoxGunsNumber.Size = new System.Drawing.Size(102, 21);
-            this.comboBoxGunsNumber.TabIndex = 0;
-            this.comboBoxGunsNumber.Text = "Количество";
             // 
             // FormShipConfig
             // 
@@ -497,7 +493,6 @@
             this.groupBoxColors.ResumeLayout(false);
             this.panelYellow.ResumeLayout(false);
             this.panelFuchsia.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
             this.groupBoxGuns.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -521,12 +516,7 @@
         private System.Windows.Forms.GroupBox groupBoxColors;
         private System.Windows.Forms.Panel panelWhite;
         private System.Windows.Forms.Panel panelYellow;
-        private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panelFuchsia;
-        private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panelBlack;
         private System.Windows.Forms.Panel panelGreen;
         private System.Windows.Forms.Panel panelBlue;
@@ -537,9 +527,12 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.GroupBox groupBoxGuns;
-        private System.Windows.Forms.ComboBox comboBoxGunsNumber;
-        private System.Windows.Forms.ComboBox comboBoxGunsForm;
         private System.Windows.Forms.Label labelChangeGuns;
-        private System.Windows.Forms.Label labelFinalChange;
+        private System.Windows.Forms.Label labelTrapezeForm;
+        private System.Windows.Forms.Label labelTriangleForm;
+        private System.Windows.Forms.Label labelRectangleForm;
+        private System.Windows.Forms.Label labelSixGuns;
+        private System.Windows.Forms.Label labelFourGuns;
+        private System.Windows.Forms.Label labelTwoGuns;
     }
 }

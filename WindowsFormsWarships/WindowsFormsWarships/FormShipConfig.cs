@@ -12,15 +12,13 @@ namespace WindowsFormsWarships
 {
     public partial class FormShipConfig : Form
     {
-        Vehicle ship = null;      
+        Vehicle ship = null;
 
         private event Action<Vehicle> eventActionAddShip;
 
         public FormShipConfig()
         {
             InitializeComponent();
-            comboBoxGunsNumber.Items.AddRange(new string[] { "2 Guns", "4 Guns", "6 Guns" });
-            comboBoxGunsForm.Items.AddRange(new string[] { "Трапеция", "Треугольник", "Квадрат" });
 
             panelWhite.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelColor_MouseDown);
             panelYellow.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelColor_MouseDown);
@@ -136,7 +134,7 @@ namespace WindowsFormsWarships
 
         private void LabelChangeGuns_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(typeof(TrapezeGunForm)) || e.Data.GetDataPresent(typeof(TriangleGunForm)) 
+            if (e.Data.GetDataPresent(typeof(TrapezeGunForm)) || e.Data.GetDataPresent(typeof(TriangleGunForm))
                 || e.Data.GetDataPresent(typeof(RectangleGunForm)))
             {
                 e.Effect = DragDropEffects.Copy;
@@ -147,44 +145,44 @@ namespace WindowsFormsWarships
             }
         }
 
-        private void LabelFinalChange_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (comboBoxGunsForm.Text != "Форма" && comboBoxGunsNumber.Text != "Количество")
-            {
-                Color dopColor;
-                IDopElements guns = null;
-                int gunsNumber = (comboBoxGunsNumber.SelectedIndex + 1) * 2;
-                if (ship is Warship)
-                {
-                    dopColor = (ship as Warship).DopColor;
-                }
-                else 
-                {                    
-                    dopColor = Color.White;
-                }
-                if (comboBoxGunsForm.Text == "Трапеция")
-                {                    
-                    guns = new TrapezeGunForm(gunsNumber, dopColor);
-                }
-                else if (comboBoxGunsForm.Text == "Треугольник")
-                {
-                    guns = new TriangleGunForm(gunsNumber, dopColor);
-                }
-                else if (comboBoxGunsForm.Text == "Квадрат")
-                {
-                    guns = new RectangleGunForm(gunsNumber, dopColor);
-                }
-                if (guns != null)
-                {
-                    labelFinalChange.DoDragDrop(guns, DragDropEffects.Move | DragDropEffects.Copy);
-                    if (ship is Warship w)
-                    {
-                        w.SetGunNumber(gunsNumber);
-                    }
-                }
-                
-            }
-        }
+        //private void LabelFinalChange_MouseDown(object sender, MouseEventArgs e)
+        //{
+        //    if (comboBoxGunsForm.Text != "Форма" && comboBoxGunsNumber.Text != "Количество")
+        //    {
+        //        Color dopColor;
+        //        IDopElements guns = null;
+        //        int gunsNumber = (comboBoxGunsNumber.SelectedIndex + 1) * 2;
+        //        if (ship is Warship)
+        //        {
+        //            dopColor = (ship as Warship).DopColor;
+        //        }
+        //        else 
+        //        {                    
+        //            dopColor = Color.White;
+        //        }
+        //        if (comboBoxGunsForm.Text == "Трапеция")
+        //        {                    
+        //            guns = new TrapezeGunForm(gunsNumber, dopColor);
+        //        }
+        //        else if (comboBoxGunsForm.Text == "Треугольник")
+        //        {
+        //            guns = new TriangleGunForm(gunsNumber, dopColor);
+        //        }
+        //        else if (comboBoxGunsForm.Text == "Квадрат")
+        //        {
+        //            guns = new RectangleGunForm(gunsNumber, dopColor);
+        //        }
+        //        if (guns != null)
+        //        {
+        //            labelFinalChange.DoDragDrop(guns, DragDropEffects.Move | DragDropEffects.Copy);
+        //            if (ship is Warship w)
+        //            {
+        //                w.SetGunNumber(gunsNumber);
+        //            }
+        //        }
+
+        //    }
+        //}
 
         private void LabelChangeGuns_DragDrop(object sender, DragEventArgs e)
         {
@@ -203,6 +201,58 @@ namespace WindowsFormsWarships
                     w.SetGun((RectangleGunForm)e.Data.GetData(typeof(RectangleGunForm)));
                 }
                 DrawShip();
+            }
+        }
+
+        //delete thi s please
+        private void LabelGunForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            IDopElements gun = null;
+            if (ship is Warship w)
+            {
+                switch (((Label)sender).Text)
+                {
+                    case "Трапеция":
+                        gun = new TrapezeGunForm(w.Guns, w.DopColor);
+                        break;
+                    case "Треугольник":
+                        gun = new TriangleGunForm(w.Guns, w.DopColor);
+                        break;
+                    case "Квадрат":
+                        gun = new RectangleGunForm(w.Guns, w.DopColor);
+                        break;
+                }
+                if (gun != null)
+                {
+                    ((Label)sender).DoDragDrop(gun, DragDropEffects.Move | DragDropEffects.Copy);
+                }
+            }
+
+        }
+
+        private void LabelNumberGuns_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (ship is Warship w)
+            {
+                IDopElements gun = null;
+                int gunsNumber = Convert.ToInt32(((Label)sender).Text);
+                switch (w.GunsForm)
+                {
+                    case "TrapezeGunForm":
+                        gun = new TrapezeGunForm(gunsNumber, w.DopColor);
+                        break;
+                    case "TriangleGunForm":
+                        gun = new TriangleGunForm(gunsNumber, w.DopColor);
+                        break;
+                    case "RectangleGunForm":
+                        gun = new RectangleGunForm(gunsNumber, w.DopColor);
+                        break;
+                }
+                if (gun != null)
+                {
+                    ((Label)sender).DoDragDrop(gun, DragDropEffects.Move | DragDropEffects.Copy);
+                    w.SetGunNumber(gunsNumber);
+                }
             }
         }
     }
