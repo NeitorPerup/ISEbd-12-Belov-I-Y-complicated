@@ -40,15 +40,26 @@
             this.textBoxNewLevelName = new System.Windows.Forms.TextBox();
             this.labelDockName = new System.Windows.Forms.Label();
             this.buttonAddShip = new System.Windows.Forms.Button();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.всеДокиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.толькоВыбранныйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.всеДокиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.одинДокToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDock)).BeginInit();
             this.groupBox.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxDock
             // 
-            this.pictureBoxDock.Location = new System.Drawing.Point(4, 2);
+            this.pictureBoxDock.Location = new System.Drawing.Point(4, 26);
             this.pictureBoxDock.Name = "pictureBoxDock";
-            this.pictureBoxDock.Size = new System.Drawing.Size(736, 446);
+            this.pictureBoxDock.Size = new System.Drawing.Size(736, 422);
             this.pictureBoxDock.TabIndex = 0;
             this.pictureBoxDock.TabStop = false;
             // 
@@ -156,6 +167,80 @@
             this.buttonAddShip.UseVisualStyleBackColor = true;
             this.buttonAddShip.Click += new System.EventHandler(this.ButtonAddShip_Click);
             // 
+            // menuStrip
+            // 
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(880, 24);
+            this.menuStrip.TabIndex = 10;
+            this.menuStrip.Text = "menuStrip1";
+            // 
+            // файлToolStripMenuItem
+            // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сохранитьToolStripMenuItem,
+            this.загрузитьToolStripMenuItem});
+            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // сохранитьToolStripMenuItem
+            // 
+            this.сохранитьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.всеДокиToolStripMenuItem,
+            this.толькоВыбранныйToolStripMenuItem});
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            // 
+            // всеДокиToolStripMenuItem
+            // 
+            this.всеДокиToolStripMenuItem.Name = "всеДокиToolStripMenuItem";
+            this.всеДокиToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.всеДокиToolStripMenuItem.Text = "Все доки";
+            this.всеДокиToolStripMenuItem.Click += new System.EventHandler(this.СохранитьВсеДокиToolStripMenuItem_Click);
+            // 
+            // толькоВыбранныйToolStripMenuItem
+            // 
+            this.толькоВыбранныйToolStripMenuItem.Name = "толькоВыбранныйToolStripMenuItem";
+            this.толькоВыбранныйToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.толькоВыбранныйToolStripMenuItem.Text = "Только выбранный";
+            this.толькоВыбранныйToolStripMenuItem.Click += new System.EventHandler(this.ТолькоВыбранныйToolStripMenuItem_Click);
+            // 
+            // загрузитьToolStripMenuItem
+            // 
+            this.загрузитьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.всеДокиToolStripMenuItem1,
+            this.одинДокToolStripMenuItem});
+            this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.загрузитьToolStripMenuItem.Text = "Загрузить";
+            // 
+            // всеДокиToolStripMenuItem1
+            // 
+            this.всеДокиToolStripMenuItem1.Name = "всеДокиToolStripMenuItem1";
+            this.всеДокиToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.всеДокиToolStripMenuItem1.Text = "Все доки";
+            this.всеДокиToolStripMenuItem1.Click += new System.EventHandler(this.ЗагрузитьToolStripMenuItem_Click);
+            // 
+            // одинДокToolStripMenuItem
+            // 
+            this.одинДокToolStripMenuItem.Name = "одинДокToolStripMenuItem";
+            this.одинДокToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.одинДокToolStripMenuItem.Text = "Один док";
+            this.одинДокToolStripMenuItem.Click += new System.EventHandler(this.ОдинДокToolStripMenuItem_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.Filter = "txt file | *.txt";
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "txt file | *.txt";
+            // 
             // FormDock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,11 +254,14 @@
             this.Controls.Add(this.listBoxDock);
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.pictureBoxDock);
+            this.Controls.Add(this.menuStrip);
             this.Name = "FormDock";
             this.Text = "FormDock";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDock)).EndInit();
             this.groupBox.ResumeLayout(false);
             this.groupBox.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,5 +281,15 @@
         private System.Windows.Forms.Label labelDockName;
         private System.Windows.Forms.Button buttonUndockingShips;
         private System.Windows.Forms.Button buttonAddShip;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.ToolStripMenuItem всеДокиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem толькоВыбранныйToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem всеДокиToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem одинДокToolStripMenuItem;
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.IO;
 
 namespace WindowsFormsWarships
 {
@@ -82,7 +83,7 @@ namespace WindowsFormsWarships
         {
             get
             {
-                if (ind >= 0 && ind < _maxCount)
+                if (ind >= 0 && ind < _places.Count)
                 {
                     return _places[ind];
                 }
