@@ -196,7 +196,7 @@ namespace WindowsFormsWarships
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (dockCollection.LoadData(openFileDialog.FileName, true))
+                if (dockCollection.LoadDockCollection(openFileDialog.FileName))
                 {
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
@@ -235,7 +235,7 @@ namespace WindowsFormsWarships
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (dockCollection.LoadData(openFileDialog.FileName, false))
+                if (dockCollection.LoadDock(openFileDialog.FileName))
                 {
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);

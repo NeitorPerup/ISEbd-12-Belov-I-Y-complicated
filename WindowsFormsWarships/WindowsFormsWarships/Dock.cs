@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
+using NLog;
 
 namespace WindowsFormsWarships
 {
@@ -22,6 +23,8 @@ namespace WindowsFormsWarships
 
         private readonly int _placeSizeHeight = 80;
 
+        private readonly Logger logger = LogManager.GetCurrentClassLogger();
+
         public Dock(int picWidth, int picHeight)
         {
             int width = picWidth / _placeSizeWidth;
@@ -36,7 +39,8 @@ namespace WindowsFormsWarships
         {
             if (d._places.Count >= d._maxCount)
             {
-                return false;
+                d.logger.Warn("Вызвано исключение DockOverflowException");
+                throw new DockOverflowException();
             }
             d._places.Add(ship);
             return true;
@@ -46,7 +50,8 @@ namespace WindowsFormsWarships
         {
             if (index <= -1 || index >= d._places.Count)
             {
-                return null;
+                d.logger.Warn("Вызвано исключение DockNotFoundException");
+                throw new DockNotFoundException(index);
             }
             T ship = d._places[index];
             d._places.RemoveAt(index);
@@ -89,6 +94,11 @@ namespace WindowsFormsWarships
                 }
                 return null;
             }
+        }
+
+        public void ClearPlaces()
+        {
+            _places.Clear();
         }
     }
 }

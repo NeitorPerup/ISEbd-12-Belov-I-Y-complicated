@@ -64,7 +64,7 @@ namespace WindowsFormsWarships
             {
                 if (dockStages.ContainsKey(key) && ind >= 0)
                 {
-                    return dockStages[key]._places[ind];
+                    return dockStages[key][ind];
                 }
                 return null;
             }
@@ -115,6 +115,10 @@ namespace WindowsFormsWarships
             {
                 File.Delete(filename);
             }
+            if (!dockStages.ContainsKey(dockName))
+            {
+                return false;
+            }
             using (FileStream fs = new FileStream(filename, FileMode.Create))
             {
                 using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
@@ -124,6 +128,7 @@ namespace WindowsFormsWarships
                     sw.WriteLine($"Dock{separator}{dockName}");
                     ITransport ship = null;
                     var level = dockStages[dockName];
+
 
                     for (int i = 0; (ship = level[i]) != null; i++)
                     {
@@ -142,13 +147,12 @@ namespace WindowsFormsWarships
                             sw.WriteLine(ship);
                         }
                     }
-
                 }
             }
             return true;
         }
 
-        public bool LoadData(string filename, bool loadType) // true - collection; false - one dock
+        public bool LoadDockCollection(string filename)
         {
             if (!File.Exists(filename))
             {
@@ -157,12 +161,11 @@ namespace WindowsFormsWarships
             using (StreamReader sr = new StreamReader(filename))
             {
                 string line = sr.ReadLine();
-                if (line.Contains("DockCollection") && loadType)
+                if (line.Contains("DockCollection"))
                 {
                     //очищаем записи
                     dockStages.Clear();
                 }
-                else if (line.Contains("OnlyOneDock") && !loadType) { }
                 else
                 {
                     //если нет такой записи, то это не те данные
@@ -174,12 +177,7 @@ namespace WindowsFormsWarships
                 while (line != null && line.Contains("Dock"))
                 {
                     key = line.Split(separator)[1];
-                    if (dockStages.ContainsKey(key))
-                    {
-                        dockStages.Remove(key);
-                    }
-                    dockStages.Add(key, new Dock<Vehicle, TrapezeGunForm>(pictureWidth,
-                    pictureHeight));
+                    dockStages.Add(key, new Dock<Vehicle, TrapezeGunForm>(pictureWidth, pictureHeight));
 
                     line = sr.ReadLine();
                     while (line != null && (line.Contains("Ship") || line.Contains("Warship")))
@@ -202,6 +200,61 @@ namespace WindowsFormsWarships
                 }
                 return true;
             }
-        }      
+        }
+
+        public bool LoadDock(string filename)
+        {
+            if (!File.Exists(filename))
+            {
+                return false;
+            }
+            using (StreamReader sr = new StreamReader(filename))
+            {
+                string line = sr.ReadLine();
+
+                if (line.Contains("OnlyOneDock")) { }
+                else
+                {
+                    //если нет такой записи, то это не те данные
+                    return false;
+                }
+                line = sr.ReadLine();
+                Vehicle ship = null;
+                string key = string.Empty;
+                if (line != null && line.Contains("Dock"))
+                {
+                    key = line.Split(separator)[1];
+                    if (dockStages.ContainsKey(key))
+                    {
+                        dockStages[key].ClearPlaces();
+                    }
+                    else
+                    {
+                        dockStages.Add(key, new Dock<Vehicle, TrapezeGunForm>(pictureWidth, pictureHeight));
+                    }
+
+                    line = sr.ReadLine();
+                    while (line != null && (line.Contains("Ship") || line.Contains("Warship")))
+                    {
+                        if (line.Split(separator)[0] == "Ship")
+                        {
+                            ship = new Ship(line.Split(separator)[1]);
+                        }
+                        else if (line.Split(separator)[0] == "Warship")
+                        {
+                            ship = new Warship(line.Split(separator)[1]);
+                        }
+                        var result = dockStages[key] + ship;
+                        if (!result)
+                        {
+                            return false;
+                        }
+                        line = sr.ReadLine();
+                    }
+                }
+                else return false;
+                return true;
+            }
+        }
     }
 }
