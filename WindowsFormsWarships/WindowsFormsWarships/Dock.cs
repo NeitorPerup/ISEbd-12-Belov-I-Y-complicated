@@ -36,7 +36,7 @@ namespace WindowsFormsWarships
         {
             if (d._places.Count >= d._maxCount)
             {
-                return false;
+                throw new DockOverflowException();
             }
             d._places.Add(ship);
             return true;
@@ -46,7 +46,7 @@ namespace WindowsFormsWarships
         {
             if (index <= -1 || index >= d._places.Count)
             {
-                return null;
+                throw new DockNotFoundException(index);
             }
             T ship = d._places[index];
             d._places.RemoveAt(index);
