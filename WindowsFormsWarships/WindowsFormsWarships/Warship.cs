@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace WindowsFormsWarships
 {
-    public class Warship : Ship
+    public class Warship : Ship, IEquatable<Warship>, IComparable<Warship>
     {
         private IDopElements gun;
 
@@ -20,6 +20,10 @@ namespace WindowsFormsWarships
         public int Guns { private set; get; }
 
         public string GunsForm { private set; get; }
+
+        public new LinkedList<Object> objectProperties = new LinkedList<Object>();
+
+        private int currentIndex = 0;
 
         public void SetDopColor(Color color)
         {
@@ -64,12 +68,20 @@ namespace WindowsFormsWarships
             GunsForm = gunsForm;
             Guns = guns;
             SetGun();
+            foreach(var i in this.ToString().Split(separator))
+            {
+                objectProperties.AddLast(i);
+            }
         }
 
         public Warship(int maxSpeed, float weight, Color mainColor, Color dopColor) :
             base(maxSpeed, weight, mainColor, 100, 60)
         {
             DopColor = dopColor;
+            foreach (var i in this.ToString().Split(separator))
+            {
+                objectProperties.AddLast(i);
+            }
         }
 
         public Warship(string info) : base(info)
@@ -86,6 +98,10 @@ namespace WindowsFormsWarships
                 Guns = Convert.ToInt32(strs[6]);
                 GunsForm = strs[7];
                 SetGun();
+                foreach (var i in this.ToString().Split(separator))
+                {
+                    objectProperties.AddLast(i);
+                }
             }
         }
 
@@ -112,6 +128,120 @@ namespace WindowsFormsWarships
             if (Antenna)
             {
                 g.FillRectangle(brDopColor, _startPosX + 81, _startPosY - 15, 2, 20);
+            }
+        }
+
+        public bool Equals(Warship other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (Antenna != other.Antenna)
+            {
+                return false;
+            }
+            if (Guns != other.Guns)
+            {
+                return false;
+            }
+            if (GunsForm != other.GunsForm)
+            {
+                return false;
+            }
+            if (DopBuilding != other.DopBuilding)
+            {
+                return false;
+            }
+            return true;
+
+        }
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is Warship shipObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(shipObj);
+            }
+        }
+
+        public int CompareTo(Warship w)
+        {
+            var res = base.CompareTo(w);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (DopColor != w.DopColor)
+            {
+                return DopColor.Name.CompareTo(w.DopColor.Name);
+            }
+            if (Antenna != w.Antenna)
+            {
+                return Antenna.CompareTo(w.Antenna);
+            }
+            if (Guns != w.Guns)
+            {
+                return Guns.CompareTo(w.Guns);
+            }
+            if (GunsForm != w.GunsForm)
+            {
+                return Guns.CompareTo(w.Guns);
+            }
+            if (DopBuilding != w.DopBuilding)
+            {
+                return DopBuilding.CompareTo(w.DopBuilding);
+            }
+            return 0;
+        }
+
+        public new bool hasNext()
+        {
+            return (currentIndex++ < 7);
+        }
+
+        public new String next()
+        {
+            return objectProperties.Find(currentIndex).ToString();
+        }
+
+        public new void remove()
+        {
+            objectProperties.Remove(currentIndex);
+        }
+
+        public new IEnumerator<Object> iterator()
+        {
+            foreach (var i in objectProperties)
+            {
+                yield return i;
             }
         }
     }

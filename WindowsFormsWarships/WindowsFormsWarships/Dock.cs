@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,8 @@ using System.IO;
 
 namespace WindowsFormsWarships
 {
-    public class Dock<T, U> where T : class, ITransport where U : class, IDopElements
+    public class Dock<T, U> : IEnumerator<T>, IEnumerable<T> 
+        where T : class, ITransport where U : class, IDopElements
     {
         private readonly List<T> _places;
 
@@ -21,6 +23,12 @@ namespace WindowsFormsWarships
         private readonly int _placeSizeWidth = 240;
 
         private readonly int _placeSizeHeight = 80;
+
+        private int _currentIndex;
+
+        public T Current => _places[_currentIndex];
+
+        object IEnumerator.Current => _places[_currentIndex];
 
         public Dock(int picWidth, int picHeight)
         {
@@ -37,6 +45,10 @@ namespace WindowsFormsWarships
             if (d._places.Count >= d._maxCount)
             {
                 throw new DockOverflowException();
+            }
+            if (d._places.Contains(ship))
+            {
+                throw new DockAlreadyHaveException();
             }
             d._places.Add(ship);
             return true;
@@ -94,6 +106,31 @@ namespace WindowsFormsWarships
         public void ClearPlaces()
         {
             _places.Clear();
+        }
+
+        public void Sort() => _places.Sort((IComparer<T>)new ShipComparer());
+
+        public void Dispose() { }
+
+        public bool MoveNext()
+        {
+            _currentIndex++;
+            return _currentIndex < _places.Count;
+        }
+
+        public void Reset()
+        {
+            _currentIndex = -1;
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this;
         }
     }
 }
