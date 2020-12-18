@@ -126,11 +126,12 @@ namespace WindowsFormsWarships
                     sw.WriteLine($"OnlyOneDock");
 
                     sw.WriteLine($"Dock{separator}{dockName}");
-                    ITransport ship = null;
+                    //ITransport ship = null;
                     var level = dockStages[dockName];
 
 
-                    for (int i = 0; (ship = level[i]) != null; i++)
+                    //for (int i = 0; (ship = level[i]) != null; i++)
+                    foreach (ITransport ship in level)
                     {
                         if (ship != null)
                         {
