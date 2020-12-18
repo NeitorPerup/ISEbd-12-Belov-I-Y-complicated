@@ -221,14 +221,14 @@
             // всеДокиToolStripMenuItem1
             // 
             this.всеДокиToolStripMenuItem1.Name = "всеДокиToolStripMenuItem1";
-            this.всеДокиToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.всеДокиToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
             this.всеДокиToolStripMenuItem1.Text = "Все доки";
             this.всеДокиToolStripMenuItem1.Click += new System.EventHandler(this.ЗагрузитьToolStripMenuItem_Click);
             // 
             // одинДокToolStripMenuItem
             // 
             this.одинДокToolStripMenuItem.Name = "одинДокToolStripMenuItem";
-            this.одинДокToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.одинДокToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.одинДокToolStripMenuItem.Text = "Один док";
             this.одинДокToolStripMenuItem.Click += new System.EventHandler(this.ОдинДокToolStripMenuItem_Click);
             // 

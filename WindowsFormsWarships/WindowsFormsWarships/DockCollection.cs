@@ -70,7 +70,7 @@ namespace WindowsFormsWarships
             }
         }
 
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -106,10 +106,9 @@ namespace WindowsFormsWarships
                     }
                 }
             }
-            return true;
         }
 
-        public bool SaveData(string filename, string dockName)
+        public void SaveData(string filename, string dockName)
         {
             if (File.Exists(filename))
             {
@@ -117,7 +116,7 @@ namespace WindowsFormsWarships
             }
             if (!dockStages.ContainsKey(dockName))
             {
-                return false;
+                throw new FormatException();
             }
             using (FileStream fs = new FileStream(filename, FileMode.Create))
             {
@@ -149,14 +148,13 @@ namespace WindowsFormsWarships
                     }
                 }
             }
-            return true;
         }
 
-        public bool LoadDockCollection(string filename)
+        public void LoadDockCollection(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             using (StreamReader sr = new StreamReader(filename))
             {
@@ -169,7 +167,7 @@ namespace WindowsFormsWarships
                 else
                 {
                     //если нет такой записи, то это не те данные
-                    return false;
+                    throw new FormatException("Неверный формат файла");
                 }
                 line = sr.ReadLine();
                 Vehicle ship = null;
@@ -193,30 +191,27 @@ namespace WindowsFormsWarships
                         var result = dockStages[key] + ship;
                         if (!result)
                         {
-                            return false;
+                            throw new NullReferenceException();
                         }
                         line = sr.ReadLine();
                     }
                 }
-                return true;
             }
         }
 
-        public bool LoadDock(string filename)
+        public void LoadDock(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             using (StreamReader sr = new StreamReader(filename))
             {
                 string line = sr.ReadLine();
 
-                if (line.Contains("OnlyOneDock")) { }
-                else
+                if (!line.Contains("OnlyOneDock"))
                 {
-                    //если нет такой записи, то это не те данные
-                    return false;
+                    throw new FormatException("Неверный формат файла");
                 }
                 line = sr.ReadLine();
                 Vehicle ship = null;
@@ -247,13 +242,11 @@ namespace WindowsFormsWarships
                         var result = dockStages[key] + ship;
                         if (!result)
                         {
-                            return false;
+                            throw new NullReferenceException();
                         }
                         line = sr.ReadLine();
                     }
                 }
-                else return false;
-                return true;
             }
         }
     }
