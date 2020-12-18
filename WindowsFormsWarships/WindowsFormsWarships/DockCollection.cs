@@ -85,8 +85,9 @@ namespace WindowsFormsWarships
                     foreach (var level in dockStages)
                     {
                         sw.WriteLine($"Dock{separator}{level.Key}");
-                        ITransport ship = null;
-                        for (int i = 0; (ship = level.Value[i]) != null; i++)
+                        //ITransport ship = null;
+                        //for (int i = 0; (ship = level.Value[i]) != null; i++)
+                        foreach (ITransport ship in level.Value)
                         {
                             if (ship != null)
                             {

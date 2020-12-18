@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using static System.Collections.IEnumerable;
+using System.Collections;
 
 namespace WindowsFormsWarships
 {
-    public class Ship : Vehicle, IEquatable<Ship>, IComparable<Ship>
+    public class Ship : Vehicle, IEquatable<Ship>, IComparable<Ship>, IEnumerator<object>, IEnumerable<object>
     {
         protected readonly int shipWidth = 90;
 
@@ -16,15 +17,22 @@ namespace WindowsFormsWarships
 
         protected readonly char separator = ';';
 
-        public LinkedList<Object> objectProperties = new LinkedList<Object>();
+        private int _currentIndex = -1;
 
-        private int currentIndex = 0;
+        public List<Object> objectProperties = new List<Object>();
+
+        public object Current => objectProperties[_currentIndex];
+
+        object IEnumerator<Object>.Current => objectProperties[_currentIndex];
 
         public Ship(int maxSpeed, float weight, Color mainColor)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
+            objectProperties.Add(MaxSpeed);
+            objectProperties.Add(Weight);
+            objectProperties.Add(MainColor);
         }
 
         protected Ship(int maxSpeed, float weight, Color mainColor, int shipWidth, int shipHeight)
@@ -34,6 +42,9 @@ namespace WindowsFormsWarships
             MainColor = mainColor;
             this.shipWidth = shipWidth;
             this.shipHeight = shipHeight;
+            objectProperties.Add(MaxSpeed);
+            objectProperties.Add(Weight);
+            objectProperties.Add(MainColor);
         }
 
         public Ship(string info)
@@ -44,6 +55,9 @@ namespace WindowsFormsWarships
                 MaxSpeed = Convert.ToInt32(strs[0]);
                 Weight = Convert.ToInt32(strs[1]);
                 MainColor = Color.FromName(strs[2]);
+                objectProperties.Add(MaxSpeed);
+                objectProperties.Add(Weight);
+                objectProperties.Add(MainColor);
             }
         }
 
@@ -189,27 +203,27 @@ namespace WindowsFormsWarships
             return 0;
         }
 
-        public bool hasNext()
+        public void Dispose() { }
+
+        public bool MoveNext()
         {
-            return (currentIndex++ < 3);
+            _currentIndex++;
+            return _currentIndex < 7;
         }
 
-        public String next()
+        public void Reset()
         {
-            return objectProperties.Find(currentIndex).ToString();
+            _currentIndex = -1;
         }
 
-        public void remove()
+        public IEnumerator<object> GetEnumerator()
         {
-            objectProperties.Remove(currentIndex);
+            return (IEnumerator<object>)objectProperties;
         }
 
-        public IEnumerator<Object> iterator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
-            foreach (var i in objectProperties)
-            {
-                yield return i;
-            }
+            return GetEnumerator();
         }
     }
 }

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Collections;
 
 namespace WindowsFormsWarships
 {
-    public class Warship : Ship, IEquatable<Warship>, IComparable<Warship>
+    public class Warship : Ship, IEquatable<Warship>, IComparable<Warship>, IEnumerator<object>, IEnumerable<object>
     {
         private IDopElements gun;
 
@@ -21,9 +22,13 @@ namespace WindowsFormsWarships
 
         public string GunsForm { private set; get; }
 
-        public new LinkedList<Object> objectProperties = new LinkedList<Object>();
+        private int _currentIndex = -1;
 
-        private int currentIndex = 0;
+        public new List<Object> objectProperties = new List<Object>();
+
+        public new object Current => objectProperties[_currentIndex];
+
+        object IEnumerator<Object>.Current => objectProperties[_currentIndex];
 
         public void SetDopColor(Color color)
         {
@@ -58,7 +63,7 @@ namespace WindowsFormsWarships
             }
         }
 
-        public Warship(int maxSpeed, float weight, Color mainColor, Color dopColor, 
+        public Warship(int maxSpeed, float weight, Color mainColor, Color dopColor,
             bool antenna, bool dopBuilding, int guns, string gunsForm) :
             base(maxSpeed, weight, mainColor, 100, 60)
         {
@@ -68,20 +73,24 @@ namespace WindowsFormsWarships
             GunsForm = gunsForm;
             Guns = guns;
             SetGun();
-            foreach(var i in this.ToString().Split(separator))
-            {
-                objectProperties.AddLast(i);
-            }
+            objectProperties.Add(MaxSpeed);
+            objectProperties.Add(Weight);
+            objectProperties.Add(MainColor);
+            objectProperties.Add(DopColor);
+            objectProperties.Add(Antenna);
+            objectProperties.Add(DopBuilding);
+            objectProperties.Add(Guns);
+            objectProperties.Add(GunsForm);
         }
 
         public Warship(int maxSpeed, float weight, Color mainColor, Color dopColor) :
             base(maxSpeed, weight, mainColor, 100, 60)
         {
             DopColor = dopColor;
-            foreach (var i in this.ToString().Split(separator))
-            {
-                objectProperties.AddLast(i);
-            }
+            objectProperties.Add(MaxSpeed);
+            objectProperties.Add(Weight);
+            objectProperties.Add(MainColor);
+            objectProperties.Add(DopColor);
         }
 
         public Warship(string info) : base(info)
@@ -93,15 +102,19 @@ namespace WindowsFormsWarships
                 Weight = Convert.ToInt32(strs[1]);
                 MainColor = Color.FromName(strs[2]);
                 DopColor = Color.FromName(strs[3]);
-                Antenna = Convert.ToBoolean(strs[4]);                
+                Antenna = Convert.ToBoolean(strs[4]);
                 DopBuilding = Convert.ToBoolean(strs[5]);
                 Guns = Convert.ToInt32(strs[6]);
                 GunsForm = strs[7];
                 SetGun();
-                foreach (var i in this.ToString().Split(separator))
-                {
-                    objectProperties.AddLast(i);
-                }
+                objectProperties.Add(MaxSpeed);
+                objectProperties.Add(Weight);
+                objectProperties.Add(MainColor);
+                objectProperties.Add(DopColor);
+                objectProperties.Add(Antenna);
+                objectProperties.Add(DopBuilding);
+                objectProperties.Add(Guns);
+                objectProperties.Add(GunsForm);
             }
         }
 
@@ -222,27 +235,27 @@ namespace WindowsFormsWarships
             return 0;
         }
 
-        public new bool hasNext()
+        public new void Dispose() { }
+
+        public new bool MoveNext()
         {
-            return (currentIndex++ < 7);
+            _currentIndex++;
+            return _currentIndex < 7;
         }
 
-        public new String next()
+        public new void Reset()
         {
-            return objectProperties.Find(currentIndex).ToString();
+            _currentIndex = -1;
         }
 
-        public new void remove()
+        public new IEnumerator<object> GetEnumerator()
         {
-            objectProperties.Remove(currentIndex);
+            return (IEnumerator<object>)objectProperties;
         }
 
-        public new IEnumerator<Object> iterator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
-            foreach (var i in objectProperties)
-            {
-                yield return i;
-            }
+            return GetEnumerator();
         }
     }
 }

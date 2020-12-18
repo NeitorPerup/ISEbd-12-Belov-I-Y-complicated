@@ -38,7 +38,8 @@ namespace WindowsFormsWarships
             pictureWidth = picWidth;
             pictureHeight = picHeight;
             _places = new List<T>();
-        }
+            _currentIndex = -1;
+    }
 
         public static bool operator +(Dock<T, U> d, T ship)
         {
