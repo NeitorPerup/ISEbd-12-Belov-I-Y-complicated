@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using static System.Collections.IEnumerable;
+using System.Collections;
 
 namespace WindowsFormsWarships
 {
-    public class Ship : Vehicle
+    public class Ship : Vehicle, IEquatable<Ship>, IComparable<Ship>, IEnumerator<object>, IEnumerable<object>
     {
         protected readonly int shipWidth = 90;
 
@@ -16,11 +17,22 @@ namespace WindowsFormsWarships
 
         protected readonly char separator = ';';
 
+        private int _currentIndex = -1;
+
+        public List<Object> objectProperties = new List<Object>();
+
+        public object Current => objectProperties[_currentIndex];
+
+        object IEnumerator<Object>.Current => objectProperties[_currentIndex];
+
         public Ship(int maxSpeed, float weight, Color mainColor)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
+            objectProperties.Add(MaxSpeed);
+            objectProperties.Add(Weight);
+            objectProperties.Add(MainColor);
         }
 
         protected Ship(int maxSpeed, float weight, Color mainColor, int shipWidth, int shipHeight)
@@ -30,6 +42,9 @@ namespace WindowsFormsWarships
             MainColor = mainColor;
             this.shipWidth = shipWidth;
             this.shipHeight = shipHeight;
+            objectProperties.Add(MaxSpeed);
+            objectProperties.Add(Weight);
+            objectProperties.Add(MainColor);
         }
 
         public Ship(string info)
@@ -40,6 +55,9 @@ namespace WindowsFormsWarships
                 MaxSpeed = Convert.ToInt32(strs[0]);
                 Weight = Convert.ToInt32(strs[1]);
                 MainColor = Color.FromName(strs[2]);
+                objectProperties.Add(MaxSpeed);
+                objectProperties.Add(Weight);
+                objectProperties.Add(MainColor);
             }
         }
 
@@ -125,6 +143,87 @@ namespace WindowsFormsWarships
             PointF[] tubePoints = {new PointF(_startPosX + 115, _startPosY + 5), new PointF(_startPosX + 108, _startPosY - 12),
                              new PointF(_startPosX + 126, _startPosY - 18), new PointF(_startPosX + 133, _startPosY + 5) };
             g.FillPolygon(brMainColor, tubePoints);
+        }
+
+        public bool Equals(Ship other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is Ship shipObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(shipObj);
+            }
+        }
+
+        public int CompareTo(Ship s)
+        {
+            if (MaxSpeed != s.MaxSpeed)
+            {
+                return MaxSpeed.CompareTo(s.MaxSpeed);
+            }
+            if (Weight != s.Weight)
+            {
+                return Weight.CompareTo(s.Weight);
+            }
+            if (MainColor != s.MainColor)
+            {
+                return MainColor.Name.CompareTo(s.MainColor.Name);
+            }
+            return 0;
+        }
+
+        public void Dispose() { }
+
+        public bool MoveNext()
+        {
+            _currentIndex++;
+            return _currentIndex < 7;
+        }
+
+        public void Reset()
+        {
+            _currentIndex = -1;
+        }
+
+        public IEnumerator<object> GetEnumerator()
+        {
+            return (IEnumerator<object>)objectProperties;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Direction.cs" />
     <Compile Include="Dock.cs" />
+    <Compile Include="DockAlreadyHaveException.cs" />
     <Compile Include="DockCollection.cs" />
     <Compile Include="DockNotFoundException.cs" />
     <Compile Include="DockOverflowException.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="FormShipConfig.Designer.cs">
       <DependentUpon>FormShipConfig.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShipComparer.cs" />
     <Compile Include="TrapezeGunForm.cs" />
     <Compile Include="FormWarship.cs">
       <SubType>Form</SubType>
